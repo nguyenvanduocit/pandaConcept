@@ -7,6 +7,63 @@ description: Side-by-side comparison of image generation outputs across differen
 
 Analyze and compare interior design renders from different AI providers to help the user choose the best output or provider for their needs.
 
+## Pre-flight Checks (MANDATORY — run before comparison)
+
+**Before comparing**, check what renders and data are available.
+
+```
+!ls projects/${PROJECT_NAME}/renders/*.png 2>/dev/null | head -20 && echo "HAS_RENDERS=true" || echo "HAS_RENDERS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/renders/ 2>/dev/null | grep -c '.png' && echo "RENDER_COUNT above"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/depth_map.png 2>/dev/null && echo "HAS_DEPTH=true" || echo "HAS_DEPTH=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/style-config.yaml 2>/dev/null && echo "HAS_STYLE_CONFIG=true" || echo "HAS_STYLE_CONFIG=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/notes.md 2>/dev/null && echo "HAS_NOTES=true" || echo "HAS_NOTES=false"
+```
+
+### Decision Logic
+
+```
+HAS_RENDERS=false OR RENDER_COUNT < 2?
+└── STOP. Need at least 2 renders to compare. Run /render with multiple providers first.
+
+HAS_DEPTH=true AND HAS_REFERENCE=true?
+└── Include "Layout Preservation" criterion in comparison.
+    Auto-run /validate-layout for each render and include SSIM scores in the table.
+
+HAS_DEPTH=false AND HAS_REFERENCE=true?
+└── Layout comparison available but depth map missing.
+    Suggest running /preprocess-room first for quantitative layout scoring.
+    OR skip layout criterion if user doesn't care about layout fidelity.
+
+HAS_STYLE_CONFIG=true?
+└── Read style-config.yaml — use configured colors, materials, style as ground truth for "Style Accuracy" scoring.
+    Don't judge style accuracy by memory — check against the config.
+
+HAS_NOTES=true?
+└── Read notes.md — check for previous comparison results and feedback trends.
+    Append new comparison results to notes.md.
+
+No reference photo (text-to-image only)?
+└── Skip "Layout Preservation" criterion entirely — not applicable.
+```
+
+**Data-driven comparison > subjective comparison.** Use project config as ground truth wherever possible.
+
 ## Input
 
 - Multiple rendered images from `/render` (or image paths provided by user)

@@ -7,6 +7,52 @@ description: Full AI-powered interior design consultation — room analysis, sty
 
 Provide comprehensive design consultation by analyzing requirements and producing a complete design brief.
 
+## Pre-flight Checks (MANDATORY — run before consultation)
+
+**Before asking questions**, check what data already exists to avoid redundant work.
+
+```
+!ls projects/${PROJECT_NAME}/brief.md 2>/dev/null && echo "HAS_BRIEF=true" || echo "HAS_BRIEF=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/style-config.yaml 2>/dev/null && echo "HAS_STYLE_CONFIG=true" || echo "HAS_STYLE_CONFIG=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/semantic_analysis.json 2>/dev/null && echo "HAS_SEMANTIC=true" || echo "HAS_SEMANTIC=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/notes.md 2>/dev/null && echo "HAS_NOTES=true" || echo "HAS_NOTES=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+### Decision Logic
+
+```
+HAS_SEMANTIC=true?
+└── Read semantic_analysis.json — pre-fill style, colors, materials, lighting from Gemini Vision analysis.
+    Skip questions about things already known. Announce what was pre-filled.
+
+HAS_BRIEF=true AND brief has content?
+└── Read brief.md — pre-fill from existing brief. Only ask about missing/unclear sections.
+
+HAS_STYLE_CONFIG=true?
+└── Read style-config.yaml — style, palette, materials already decided. Focus on gaps.
+
+HAS_NOTES=true?
+└── Read notes.md — check for previous feedback to avoid recommending rejected options.
+
+HAS_REFERENCE=true AND HAS_SEMANTIC=false?
+└── Suggest running /preprocess-room first — Gemini Vision analysis will give much better data for consultation.
+```
+
+**Never ask what the data already shows.** Pre-fill and confirm instead of re-asking.
+
 ## Consultation Flow
 
 ### Step 1: Gather Requirements

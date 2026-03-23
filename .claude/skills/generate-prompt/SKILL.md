@@ -7,6 +7,48 @@ description: Generate optimized image generation prompts for a specific interior
 
 Create optimized image generation prompts tailored to specific AI providers and design styles.
 
+## Preprocessing Check (MANDATORY — run before generating prompts)
+
+**Before generating any prompt**, detect whether this project has preprocessed control maps. This determines prompt strategy.
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/ 2>/dev/null && echo "HAS_CONTROL_MAPS=true" || echo "HAS_CONTROL_MAPS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/masks/ 2>/dev/null && echo "HAS_MASKS=true" || echo "HAS_MASKS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+### Decision Logic
+
+```
+HAS_REFERENCE=true AND HAS_CONTROL_MAPS=false?
+└── STOP. Run /preprocess-room FIRST. Do NOT generate prompts without control maps when a reference photo exists.
+
+HAS_CONTROL_MAPS=true?
+└── STRUCTURE CONTROL MODE:
+    - Prompt must include spatial/structural keywords: "preserving room layout", "maintaining spatial structure"
+    - Prompt must emphasize materials, colors, furniture OVER room geometry (the depth map handles geometry)
+    - Do NOT describe wall positions, window placement, ceiling height — the control map provides this
+    - For Stability AI: prompt focuses on style + materials (structure API handles layout)
+    - For Flux depth-pro: prompt focuses on style + atmosphere (depth map handles layout)
+
+HAS_MASKS=true?
+└── INPAINTING MODE:
+    - Generate TWO prompts: one for the masked region only, one for full scene context
+    - Masked region prompt: describe ONLY what goes in the masked area (e.g., "a tufted velvet sofa in navy blue")
+    - Full context prompt: describe the whole room for coherence, but mark what changes
+
+Neither (text-to-image)?
+└── Standard mode — describe everything including room geometry, layout, spatial arrangement
+```
+
+**Mode selection is automatic.** Adjust prompt strategy silently based on what exists.
+
 ## Input Requirements
 
 Gather from the user (ask if not provided via `$ARGUMENTS`):

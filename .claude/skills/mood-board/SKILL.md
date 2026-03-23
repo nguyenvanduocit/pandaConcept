@@ -7,6 +7,49 @@ description: Generate detailed mood board descriptions with colors, textures, fu
 
 Create rich, detailed mood board descriptions that capture the essence of a design concept — usable as creative briefs or as input for image generation.
 
+## Pre-flight Checks (MANDATORY — run before generating mood board)
+
+**Before generating**, check what data already exists to enrich the mood board.
+
+```
+!ls projects/${PROJECT_NAME}/style-config.yaml 2>/dev/null && echo "HAS_STYLE_CONFIG=true" || echo "HAS_STYLE_CONFIG=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/semantic_analysis.json 2>/dev/null && echo "HAS_SEMANTIC=true" || echo "HAS_SEMANTIC=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/brief.md 2>/dev/null && echo "HAS_BRIEF=true" || echo "HAS_BRIEF=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/notes.md 2>/dev/null && echo "HAS_NOTES=true" || echo "HAS_NOTES=false"
+```
+
+### Decision Logic
+
+```
+HAS_STYLE_CONFIG=true?
+└── Read style-config.yaml — use exact colors (hex), materials, lighting settings.
+    Do NOT invent colors/materials — use what's configured.
+
+HAS_SEMANTIC=true?
+└── Read semantic_analysis.json — use real room data (existing materials, colors, furniture).
+    Mood board should build ON TOP of what exists, not ignore it.
+
+HAS_BRIEF=true?
+└── Read brief.md — extract mood/atmosphere, client preferences, constraints.
+
+HAS_NOTES=true?
+└── Read notes.md — check for feedback on previous mood boards or renders to avoid repeating mistakes.
+
+None of the above?
+└── Standard mode — gather all inputs from user.
+```
+
+**A mood board grounded in real project data is 10x more useful than a generic one.**
+
 ## Input
 
 Gather from user or `$ARGUMENTS`:

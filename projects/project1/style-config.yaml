@@ -1,0 +1,36 @@
+# Style Configuration for Project 1
+# Auto-generated from Gemini Vision analysis (2026-03-23)
+
+primary_style: "contemporary"
+secondary_style: "minimalist"
+
+color_palette:
+  primary: "#C8BEAF"       # warm beige marble-look
+  secondary: "#46372D"     # dark wood vanity
+  accent: "#000000"        # black accessories
+  neutrals: ["#FFFFFF", "#969696", "#BEBEBE"]
+
+materials:
+  - "large format beige marble-look tiles (honed finish)"
+  - "dark wood veneer (floating vanity)"
+  - "frameless tempered glass (shower enclosure)"
+  - "white ceramic (toilet, sink)"
+  - "chrome/stainless steel fixtures"
+  - "solid surface countertop"
+
+lighting:
+  mood: "warm"
+  time_of_day: "night"
+
+photography:
+  camera_angle: "eye-level"
+  lens: "wide"
+  depth_of_field: "deep"
+
+providers:
+  preferred: ["gemini", "flux", "stability"]
+  negative_prompts: "Clutter, dirt, old-fashioned, vintage, busy patterns, low quality, blurry, discolored, messy, poor composition, excessive decorations, plants, windows"
+
+quality:
+  resolution: "1024x1024"
+  photorealism: "high"

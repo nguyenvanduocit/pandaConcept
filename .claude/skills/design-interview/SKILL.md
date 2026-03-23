@@ -40,16 +40,55 @@ Jumping straight to `/generate-prompt` or `/render` with vague requirements ("l�
 ## Phase 1: Initialize
 
 1. **Parse the user's idea** from `$ARGUMENTS`
-2. **Detect project context**:
-   - Check if user specifies a project name
-   - If `projects/<name>/brief.md` exists and has content → **existing project** (read brief, rooms, style-config, notes)
-   - If no project specified → ask which project, or create new one from `.template/`
-3. **Check for reference images** in `projects/<name>/references/` — if present, note them for context
-4. **Read existing project files** (if any):
-   - `brief.md` — pre-fill known answers, skip already-clear dimensions
-   - `rooms.md` — know which rooms are defined
-   - `style-config.yaml` — know if style/colors/materials are already set
-   - `notes.md` — know previous feedback to avoid repeating mistakes
+2. **Detect project context** — run these checks to know what exists:
+
+```
+!ls projects/${PROJECT_NAME}/brief.md 2>/dev/null && echo "HAS_BRIEF=true" || echo "HAS_BRIEF=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/rooms.md 2>/dev/null && echo "HAS_ROOMS=true" || echo "HAS_ROOMS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/style-config.yaml 2>/dev/null && echo "HAS_STYLE_CONFIG=true" || echo "HAS_STYLE_CONFIG=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/notes.md 2>/dev/null && echo "HAS_NOTES=true" || echo "HAS_NOTES=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/semantic_analysis.json 2>/dev/null && echo "HAS_SEMANTIC=true" || echo "HAS_SEMANTIC=false"
+```
+
+### Project Detection Logic
+
+```
+No PROJECT_NAME specified?
+└── Ask which project, or create new one from .template/
+
+HAS_BRIEF=true AND brief has content?
+└── EXISTING PROJECT — read all files, pre-fill known dimensions, skip clear questions.
+
+HAS_SEMANTIC=true?
+└── Read semantic_analysis.json — pre-score Space, Style, Material dimensions from Gemini data.
+    This can jump ambiguity from 100% to ~40% instantly.
+
+HAS_REFERENCE=true AND HAS_SEMANTIC=false?
+└── Suggest running /preprocess-room first — Gemini Vision analysis dramatically reduces interview rounds.
+```
+
+3. **Read existing project files** (based on check results):
+   - `brief.md` (if exists) — pre-fill known answers, skip already-clear dimensions
+   - `rooms.md` (if exists) — know which rooms are defined
+   - `style-config.yaml` (if exists) — know if style/colors/materials are already set
+   - `notes.md` (if exists) — know previous feedback to avoid repeating mistakes
+   - `semantic_analysis.json` (if exists) — pre-fill Space, Style, Material dimensions from Gemini data
 5. **Initialize state** via `state_write(mode="design-interview")`:
 
 ```json

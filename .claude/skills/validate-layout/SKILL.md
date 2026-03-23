@@ -7,6 +7,47 @@ description: Verify that AI-generated interior designs preserve the original roo
 
 After generating a new design from a reference room photo, validate that the generated image preserves the original room's spatial layout — wall positions, furniture depth ordering, ceiling height, window placements. Uses depth map comparison (SSIM) and edge similarity as quantitative metrics.
 
+## Pre-flight Checks (MANDATORY — run before validation)
+
+**Before validating**, check what's available to avoid redundant depth extraction.
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/depth_map.png 2>/dev/null && echo "HAS_ORIGINAL_DEPTH=true" || echo "HAS_ORIGINAL_DEPTH=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/renders/*.png 2>/dev/null && echo "HAS_RENDERS=true" || echo "HAS_RENDERS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/notes.md 2>/dev/null && echo "HAS_NOTES=true" || echo "HAS_NOTES=false"
+```
+
+### Decision Logic
+
+```
+HAS_RENDERS=false?
+└── STOP. No renders to validate. Run /render first.
+
+HAS_ORIGINAL_DEPTH=true?
+└── Use existing depth map from /preprocess-room — skip re-extraction for the original image.
+    Only extract depth for the generated image(s).
+
+HAS_REFERENCE=true AND HAS_ORIGINAL_DEPTH=false?
+└── Run /preprocess-room first (depth only) to get baseline depth map.
+    OR extract depth inline using MiDaS (slower, but no dependency on /preprocess-room).
+
+HAS_NOTES=true?
+└── Read notes.md — check for previous SSIM scores. Compare trends across renders.
+    Append new validation results to notes.md.
+```
+
+**Reuse the original depth map whenever possible** — depth extraction is the most expensive step.
+
 ## Input
 
 - Original room photo (or its preprocessed depth map from `/preprocess-room`)
