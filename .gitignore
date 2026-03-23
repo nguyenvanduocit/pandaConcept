@@ -8,4 +8,5 @@ output/
 projects/*/renders/
 projects/*/references/
 .omc/
+!.claude/
 CLAUDE.local.md
