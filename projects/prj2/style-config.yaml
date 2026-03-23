@@ -1,0 +1,44 @@
+# Style Configuration for prj2
+# Reference: /style-guide for full style details
+# Auto-filled from Gemini Vision analysis (2026-03-23)
+
+primary_style: "minimalist"
+secondary_style: "contemporary"
+
+color_palette:
+  primary: "#F1F1ED"          # Off-white walls/ceiling
+  secondary: "#B09E83"        # Warm oak wood tones
+  accent: "#E9E3C8"           # Light warm beige
+  neutrals:
+    - "#E2E2E0"               # Light gray
+    - "#CBC7BE"               # Warm gray
+    - "#978D7D"               # Medium warm tone
+    - "#2B2B2B"               # Dark accents (TV, trim, chair)
+
+materials:
+  - "engineered oak wood planks (matte finish)"
+  - "oak laminate and veneer cabinetry"
+  - "smoked glass wardrobe doors"
+  - "smooth plaster walls (off-white matte)"
+  - "dark wood countertop"
+  - "sheer white linen curtains"
+  - "heavy grey drapes"
+  - "aluminum/chrome metal accents"
+  - "MDF/composite panels"
+
+lighting:
+  mood: "warm"
+  time_of_day: "afternoon"
+
+photography:
+  camera_angle: "eye-level"
+  lens: "wide"
+  depth_of_field: "deep"
+
+providers:
+  preferred: ["gemini"]
+  negative_prompts: "mess, clutter, cords, wires, personal photos, bright harsh light, heavy texture walls, ornate patterns, vintage furniture, low ceiling, carpet, colorful objects, people, pets, busy patterns, cartoon, illustration, watermark, text overlay"
+
+quality:
+  resolution: "1024x1024"
+  photorealism: "high"
