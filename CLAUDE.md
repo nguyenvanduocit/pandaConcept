@@ -61,6 +61,62 @@ pandaConcept/
 └── pyproject.toml          # Project manifest
 ```
 
+## Design Workflow Skills
+
+8 skills available via slash commands. They connect into 3 main flows:
+
+### Flow 1: New Design (from scratch)
+
+```
+/design-consult → /mood-board → /generate-prompt → /render → /compare-models
+```
+
+1. **`/design-consult`** — Thu thập yêu cầu (room, style, mood, budget) → gợi ý 2-3 style → xuất design brief (color palette, materials, furniture, lighting)
+2. **`/mood-board`** — Từ style + room → tạo mood board chi tiết (color story, textures, furniture, lighting, sensory experience)
+3. **`/generate-prompt`** — Từ style + room + details → sinh prompt tối ưu cho từng provider (Gemini, OpenAI, Stability, Midjourney, Grok, Flux)
+4. **`/render`** — Gửi prompt đến API providers → lưu ảnh vào `output/[style]/[provider]/`
+5. **`/compare-models`** — So sánh output nhiều providers (style accuracy, photorealism, composition, detail, color fidelity)
+
+### Flow 2: Edit Design (from reference image)
+
+```
+User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
+```
+
+1. **`/edit-design`** — Phân tích ảnh gốc (scene inventory: objects, surfaces, materials, colors, lighting, camera) → tạo change diff (KEEP/MODIFY/ADD/REMOVE) → sinh prompt mới giữ nguyên phần không đổi, chỉ sửa phần cần thay → hỗ trợ cả full re-render và inpainting prompt
+
+### Flow 3: Iterative Refinement
+
+```
+Ảnh chưa đạt → /refine → /render → lặp lại
+```
+
+1. **`/refine`** — Nhận prompt cũ + feedback → phân tích vấn đề (style, color, composition, detail, realism) → sinh prompt mới với tracked diff → gợi ý đổi provider nếu cần
+
+### Reference Skill
+
+- **`/style-guide`** — Tra cứu 30+ design styles (keywords, materials, colors, characteristics). Được dùng bởi các skill khác khi cần vocabulary chính xác cho từng style.
+
+### Skill Connection Map
+
+```
+                    /style-guide (reference cho tất cả)
+                         │
+    ┌────────────────────┼────────────────────┐
+    │                    │                    │
+/design-consult    /edit-design          /refine
+    │                    │                    │
+/mood-board              │                    │
+    │                    │                    │
+/generate-prompt         │                    │
+    │                    │                    │
+    └────────┬───────────┘                    │
+             │                                │
+          /render ←───────────────────────────┘
+             │
+      /compare-models
+```
+
 ## Conventions
 
 - Use type hints throughout

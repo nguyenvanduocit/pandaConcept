@@ -1,0 +1,160 @@
+---
+name: edit-design
+description: Edit an existing interior design image — analyze objects, style, materials, then generate targeted prompts for specific changes. Use when the user sends a reference image and wants modifications (change style, swap furniture, adjust colors, add/remove elements).
+---
+
+# Edit Interior Design Image
+
+Analyze a reference interior design image, identify what the user wants to change, and generate targeted prompts that preserve unchanged elements while modifying specific aspects.
+
+## Input Requirements
+
+Gather from the user (ask if not provided via `$ARGUMENTS`):
+1. **Reference image**: the image to edit (user must provide)
+2. **Desired changes**: what to modify — can be free-form (e.g., "make it Japandi", "swap the sofa for a sectional", "warmer lighting")
+3. **Target provider**: Gemini, OpenAI/DALL-E, Grok, Stability AI, Midjourney, Flux, or "all"
+4. **Preserve list** (optional): elements the user explicitly wants to keep unchanged
+
+## Analysis Process
+
+### Step 1 — Scene Inventory
+
+Analyze the reference image and document:
+
+```
+## Scene Inventory
+
+### Room
+- Type: [bathroom / living room / bedroom / etc.]
+- Dimensions feel: [compact / medium / spacious]
+- Layout: [L-shaped / rectangular / open-plan / etc.]
+
+### Objects
+- [object 1]: [description, position, material, color]
+- [object 2]: [description, position, material, color]
+- ...
+
+### Surfaces
+- Walls: [material, color, finish]
+- Floor: [material, color, pattern]
+- Ceiling: [material, color, height feel]
+
+### Style
+- Primary: [identified style]
+- Secondary influences: [if any]
+- Era/mood: [modern luxury / rustic warmth / etc.]
+
+### Materials Palette
+- [material 1]: [where used]
+- [material 2]: [where used]
+
+### Color Palette
+- Dominant: [color]
+- Secondary: [color]
+- Accents: [color]
+
+### Lighting
+- Type: [natural / artificial / mixed]
+- Sources: [windows / recessed / pendant / LED strip / etc.]
+- Mood: [warm / cool / dramatic / soft]
+- Direction: [overhead / side / backlit / etc.]
+
+### Camera
+- Angle: [eye-level / elevated / low / bird's eye]
+- Lens feel: [wide-angle / standard / telephoto]
+- Composition: [centered / rule-of-thirds / diagonal]
+```
+
+### Step 2 — Change Analysis (Diff)
+
+Compare user's request against the scene inventory:
+
+```
+## Change Diff
+
+### KEEP (unchanged)
+- [element]: [reason to preserve]
+- ...
+
+### MODIFY (change in place)
+- [element]: [current state] → [target state]
+- ...
+
+### ADD (new elements)
+- [element]: [description, placement]
+- ...
+
+### REMOVE
+- [element]: [reason]
+- ...
+
+### STYLE SHIFT (if applicable)
+- From: [current style] → To: [target style]
+- Keywords changing: [old keywords] → [new keywords]
+- Materials changing: [old] → [new]
+- Colors changing: [old] → [new]
+```
+
+### Step 3 — Generate Edit Prompts
+
+Generate prompts per provider, incorporating the diff. Use style keywords from `/style-guide` for the target style.
+
+#### Full Re-render Prompt
+
+For providers without edit/inpainting APIs — generate a complete prompt that describes the final desired result, preserving unchanged layout/composition while incorporating all changes.
+
+Follow the provider-specific prompt structures from `/generate-prompt`:
+- **OpenAI**: Under 400 chars, explicit photorealism
+- **Gemini**: Structured sections (Features/Atmosphere/Style)
+- **Stability AI**: Positive + Negative prompt, keyword style
+- **Midjourney**: Flowing description + parameters
+- **Grok**: Structured with mood/lighting sections
+- **Flux**: Descriptive with lens/photography terms
+
+#### Inpainting / Edit Prompt (when supported)
+
+For providers with edit APIs (OpenAI DALL-E edit, Stability AI inpainting):
+
+```
+## Inpainting Prompt
+
+### Region to edit: [description of area — e.g., "the wall behind the vanity"]
+### Edit instruction: [what to change in that region]
+### Context preservation: [surrounding elements to keep consistent]
+```
+
+## Output Format
+
+```
+## 1. Scene Analysis
+[Scene inventory from Step 1]
+
+## 2. Edit Plan
+[Change diff from Step 2]
+
+## 3. Generated Prompts
+
+### [Provider Name]
+
+#### Full Re-render:
+[complete prompt for generating the modified design from scratch]
+
+#### Inpainting (if supported):
+[targeted edit prompt for modifying specific regions]
+
+## 4. Style Keywords Applied
+- From `/style-guide` [target style]: [keywords used]
+
+## 5. Recommendations
+- [Which approach works best: full re-render vs inpainting]
+- [Which provider handles this type of edit best]
+- [Potential issues to watch for — e.g., "style blending may produce inconsistent furniture"]
+```
+
+## Tips
+
+- When changing style but keeping layout: emphasize spatial description and camera angle in the prompt to maintain composition
+- When swapping single objects: inpainting is preferred over full re-render for consistency
+- When adjusting colors/lighting only: minimal prompt changes needed — focus on atmosphere section
+- For adding plants/decor: be specific about placement relative to existing objects
+- Reference `/style-guide` for accurate style vocabulary when shifting between styles
