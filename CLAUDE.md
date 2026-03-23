@@ -198,11 +198,48 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 - `/edit-design` → đọc `brief.md` + ảnh gốc từ `references/`
 - `/compare-models` → đọc renders từ `renders/`, ghi kết quả vào `notes.md`
 
+**AUTO-TRIGGER Rules (CRITICAL — tự động làm, KHÔNG cần user nhắc):**
+
+Khi user **đưa ảnh phòng** (reference photo, ảnh hiện trạng, ảnh phòng thật):
+1. Tự động chạy `/preprocess-room` → extract depth + canny + segmentation
+2. Lưu control maps vào `references/preprocessed/`
+3. Khi render, tự động dùng layout-controlled API (Stability structure / Flux depth-pro)
+4. Sau khi render, tự động chạy `/validate-layout` → báo SSIM score
+
+Khi user **yêu cầu thay đổi một phần** ("đổi sofa", "sơn lại tường", "thay sàn"):
+1. Tự động chạy `/mask-room` → tạo mask cho element cần đổi
+2. Tự động dùng inpainting API thay vì full re-render
+3. Phần ngoài mask giữ nguyên pixel-perfect
+
+Khi user **yêu cầu edit/redesign từ ảnh** (bất kỳ ảnh nào):
+1. Kiểm tra `references/preprocessed/` — nếu chưa có control maps → chạy `/preprocess-room` trước
+2. `/edit-design` phải output cả full re-render prompt VÀ inpainting prompt
+3. `/render` tự chọn: có mask → inpainting, có depth map → structure control, không có gì → text-only
+
+Khi **render xong** (bất kỳ render nào từ reference photo):
+1. Tự động chạy `/validate-layout` nếu có depth map gốc trong `references/preprocessed/`
+2. Nếu SSIM < 0.70 → cảnh báo user và gợi ý tăng control_strength hoặc đổi provider
+3. Ghi SSIM score vào `notes.md`
+
+**Decision tree cho `/render`:**
+```
+Có ảnh gốc?
+├── YES → Có preprocessed maps?
+│         ├── YES → Có mask?
+│         │         ├── YES → Inpainting API (Stability/OpenAI)
+│         │         └── NO  → Structure control API (Stability/Flux)
+│         └── NO  → Chạy /preprocess-room trước → quay lại YES
+└── NO  → Text-to-image bình thường (như cũ)
+```
+
 **KHÔNG BAO GIỜ:**
 - Generate prompt mà không đọc `style-config.yaml` trước
 - Render mà không biết đang làm project nào
 - Bỏ qua feedback trong `notes.md` khi refine
 - Quên cập nhật `rooms.md` (render status) sau khi render xong
+- Render từ ảnh reference mà không preprocess trước (depth map là BẮT BUỘC)
+- Bỏ qua validate-layout khi đã có depth map gốc
+- Dùng text-to-image khi đã có control maps (phải dùng structure control)
 
 ## Conventions
 

@@ -12,6 +12,28 @@ Execute image generation by sending prompts to AI provider APIs and managing the
 - API keys configured in environment variables (see CLAUDE.md)
 - Python environment with provider SDKs installed
 
+## Auto-Routing (MANDATORY — do NOT skip)
+
+**Before rendering**, automatically detect the rendering mode:
+
+```
+Check project references/:
+├── references/masks/*.png exists?
+│   └── YES → INPAINTING MODE (mask + image + prompt → inpaint API)
+├── references/preprocessed/depth_map.png exists?
+│   └── YES → STRUCTURE CONTROL MODE (depth/control map + prompt → structure API)
+└── Neither exists but user provided a reference photo?
+    └── YES → Run /preprocess-room FIRST, then → STRUCTURE CONTROL MODE
+    └── NO  → TEXT-TO-IMAGE MODE (prompt only, like before)
+```
+
+**Mode selection is automatic.** Do not ask the user which mode to use. If control maps exist, USE THEM.
+
+**Provider routing by mode:**
+- **Inpainting**: Stability AI (`/edit/inpaint`) or OpenAI (DALL-E edit) — ONLY these support masks
+- **Structure control**: Stability AI (`/control/structure`) or Flux depth-pro (Replicate) — best layout fidelity
+- **Text-to-image**: Any provider (OpenAI, Gemini, Stability, Grok, Flux)
+
 ## Workflow
 
 ### Step 1: Input

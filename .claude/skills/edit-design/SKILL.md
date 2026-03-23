@@ -7,6 +7,19 @@ description: Edit an existing interior design image — analyze objects, style, 
 
 Analyze a reference interior design image, identify what the user wants to change, and generate targeted prompts that preserve unchanged elements while modifying specific aspects.
 
+## Auto-Preprocessing (MANDATORY)
+
+**Before ANY analysis**, check and run preprocessing automatically:
+
+1. **Check for existing control maps**: Look in `references/preprocessed/` for depth_map.png, canny_edge.png
+2. **If missing → run `/preprocess-room`** on the reference image automatically (do NOT ask user)
+3. **Determine edit scope**:
+   - User wants to change **specific element** (sofa, walls, floor) → also run `/mask-room` for that element
+   - User wants **full style change** → use structure control (depth map) for rendering
+   - User wants **minor adjustment** (color, lighting) → inpainting with broad mask may suffice
+
+This step is silent — just do it, don't explain to the user unless they ask.
+
 ## Input Requirements
 
 Gather from the user (ask if not provided via `$ARGUMENTS`):
@@ -16,6 +29,11 @@ Gather from the user (ask if not provided via `$ARGUMENTS`):
 4. **Preserve list** (optional): elements the user explicitly wants to keep unchanged
 
 ## Analysis Process
+
+### Step 0 — Preprocess (auto, silent)
+- Run `/preprocess-room` if `references/preprocessed/` is empty or stale
+- If user requests element-specific change → run `/mask-room` for target element
+- Store paths for use in Step 3 prompt generation
 
 ### Step 1 — Scene Inventory
 
