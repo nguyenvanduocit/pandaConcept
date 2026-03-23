@@ -81,7 +81,15 @@ pandaConcept/
 
 ## Design Workflow Skills
 
-8 skills available via slash commands. They connect into 3 main flows:
+9 skills available via slash commands. They connect into 4 main flows:
+
+### Flow 0: Design Interview (Recommended start — vague requirements)
+
+```
+/design-interview → /design-consult → /mood-board → /generate-prompt → /render → /compare-models
+```
+
+1. **`/design-interview`** — Phỏng vấn Socratic với ambiguity scoring — hỏi từng câu, chấm điểm clarity trên 6 chiều (Space, Style, Material/Color, Function, Mood/Lighting, Provider) — chỉ chuyển sang workflow khi ambiguity ≤ 20%. Tự động điền `brief.md`, `rooms.md`, `style-config.yaml` cho project.
 
 ### Flow 1: New Design (from scratch)
 
@@ -120,6 +128,10 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 ```
                     /style-guide (reference cho tất cả)
                          │
+                  /design-interview ← (start here khi yêu cầu mơ hồ)
+                         │
+                         │ (fills brief.md, rooms.md, style-config.yaml)
+                         │
     ┌────────────────────┼────────────────────┐
     │                    │                    │
 /design-consult    /edit-design          /refine
@@ -149,6 +161,7 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 4. **Cross-check output** — Sau khi generate prompt hoặc render, kiểm tra lại với `style-config.yaml` và `brief.md` xem có khớp không
 
 **Khi nào phải kiểm tra:**
+- `/design-interview` → đọc project files hiện có (nếu có) để pre-fill, output ghi vào `brief.md` + `rooms.md` + `style-config.yaml`
 - `/design-consult` → đọc `brief.md` trước, output ghi vào `brief.md` hoặc `notes.md`
 - `/generate-prompt` → đọc `style-config.yaml` + `rooms.md`, output lưu vào `prompts/`
 - `/render` → đọc prompt từ `prompts/`, output lưu vào `renders/`
