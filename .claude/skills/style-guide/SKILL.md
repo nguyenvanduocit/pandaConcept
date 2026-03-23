@@ -27,7 +27,7 @@ Each style is its own skill — invoke directly with `/style-<name>`:
 `/style-industrial` · `/style-brutalist` · `/style-biophilic` · `/style-maximalist` · `/style-retro-vintage` · `/style-futuristic` · `/style-bohemian` · `/style-wabi-kintsugi`
 
 ### Reference
-`styles/reference.md` — AI Prompt Formula, Provider Notes (Midjourney/DALL-E/SD/Gemini/Flux), Style Compatibility Matrix, Material Glossary, Room Material Tables, Color Hex Reference
+`styles/reference.md` — AI Prompt Formula, Provider Notes (Midjourney/DALL-E/SD/Gemini), Style Compatibility Matrix, Material Glossary, Room Material Tables, Color Hex Reference
 
 ## Quick Style Lookup
 

@@ -118,14 +118,14 @@ Evaluate each provider's output on:
 ```
 ## Model Comparison: [Style] [Room]
 
-| Criteria         | Gemini | OpenAI | Stability | Grok | Flux |
-|-----------------|--------|--------|-----------|------|------|
-| Style Accuracy  |   ★★★  |  ★★★★  |   ★★★★    | ★★★  | ★★★★ |
-| Photorealism    |   ...  |  ...   |   ...     | ...  | ...  |
-| Composition     |   ...  |  ...   |   ...     | ...  | ...  |
-| Detail Quality  |   ...  |  ...   |   ...     | ...  | ...  |
-| Color Fidelity  |   ...  |  ...   |   ...     | ...  | ...  |
-| Layout Fidelity |   ...  |  ...   |   ...     | ...  | ...  |
+| Criteria         | Gemini | OpenAI | Stability | Grok |
+|-----------------|--------|--------|-----------|------|
+| Style Accuracy  |   ★★★★ |  ★★★★  |   ★★★★    | ★★★  |
+| Photorealism    |   ...  |  ...   |   ...     | ...  |
+| Composition     |   ...  |  ...   |   ...     | ...  |
+| Detail Quality  |   ...  |  ...   |   ...     | ...  |
+| Color Fidelity  |   ...  |  ...   |   ...     | ...  |
+| Layout Fidelity |   ...  |  ...   |   ...     | ...  |
 
 ### Best For:
 - **Client presentation**: [provider] — [reason]
@@ -156,4 +156,4 @@ Suggest `/refine` for the most promising output to iterate further.
 - **Provider strengths are style-dependent**: Stability excels at textured/rustic styles, DALL-E at clean modern, Midjourney at atmospheric/dramatic. A provider ranking for Scandinavian may be reversed for Baroque.
 - **Practical value matters most**: A slightly less photorealistic image that clearly communicates the design intent is more useful than a photorealistic image with wrong style elements.
 - **Layout comparison only applies when there's a reference photo**: For text-only generations (no reference room), skip the layout criterion entirely.
-- **Different providers have different layout control capabilities**: Stability AI structure control and Flux depth-pro can preserve layout; DALL-E and Midjourney cannot. Factor this into comparisons.
+- **Different providers have different layout control capabilities**: Stability AI structure control and Gemini image editing can preserve layout; DALL-E and Midjourney cannot. Factor this into comparisons.
