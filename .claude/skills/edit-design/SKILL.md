@@ -158,3 +158,20 @@ For providers with edit APIs (OpenAI DALL-E edit, Stability AI inpainting):
 - When adjusting colors/lighting only: minimal prompt changes needed — focus on atmosphere section
 - For adding plants/decor: be specific about placement relative to existing objects
 - Reference `/style-guide` for accurate style vocabulary when shifting between styles
+
+## Session Relevant Skills
+
+- `/render` — after generating edit prompts, use /render to execute them. For inpainting edits, ensure the provider supports edit APIs (OpenAI DALL-E edit, Stability inpainting).
+- `/style-guide` — critical when changing styles. Use the target style's exact keywords, materials, and colors from the guide. Style shifts with wrong vocabulary produce hybrid-mush.
+- `/generate-prompt` — used internally for prompt format reference. Follow the same provider-specific structures when generating edit prompts.
+- `/refine` — if the first edit render doesn't match expectations, use /refine to iterate. Pass both the original image context and the edit feedback.
+- `/compare-models` — if editing across multiple providers, compare which one best preserved the unchanged elements while applying the edits.
+- `/design-consult` — if the user wants a complete redesign rather than targeted edits, redirect to /design-consult. Edit-design is for surgical changes, not ground-up rethinking.
+
+## Gotchas
+
+- **Inpainting vs full re-render**: For small changes (swap one object, adjust color), inpainting preserves consistency. For style shifts or major layout changes, full re-render is more reliable.
+- **Scene inventory must be exhaustive**: Missing an element in the inventory means the re-render prompt won't describe it, and it disappears. List everything visible.
+- **Camera angle preservation is critical**: If the re-render changes the camera angle, the edit feels like a different room, not a modified one. Always explicitly describe the original camera angle and lens feel.
+- **Don't edit what should be redesigned**: If the user wants to change style + furniture + colors + lighting, that's a redesign. Redirect to /design-consult → /generate-prompt flow.
+- **Reference image quality matters**: Low-res or heavily compressed reference images produce poor scene inventories. Ask for the best quality available.

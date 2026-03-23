@@ -56,3 +56,18 @@ When generating prompts or consulting on design:
 3. Reference **Materials** and **Colors** for specificity
 4. Combine styles when requested (e.g., "Japandi" = Japanese + Scandinavian)
 5. Adapt vocabulary per AI provider — some respond better to descriptive keywords, others to technical terms
+
+## Session Relevant Skills
+
+- `/design-consult` — uses this guide during style recommendation (Step 2). When a user's preferences are vague, consult the style guide to narrow down options.
+- `/generate-prompt` — pulls keywords, materials, and colors directly from this guide. The style guide is the source of truth for prompt vocabulary.
+- `/mood-board` — references this guide for style-accurate textures, furniture, and atmospheric descriptions.
+- `/edit-design` — when shifting styles on an existing image, this guide provides the target style's vocabulary for accurate prompt generation.
+- `/refine` — when a render doesn't match the intended style, this guide helps diagnose which keywords are missing or incorrect.
+
+## Gotchas
+
+- **Styles are not rigid categories**: Real interiors often blend 2-3 styles. When users ask for a style, check if they actually want a fusion (e.g., "modern but warm" is likely Japandi or Scandinavian, not strict Modern).
+- **Keywords are provider-sensitive**: "Wabi-sabi" works well for Midjourney but may confuse Stability AI. Adapt the keywords to the target provider's vocabulary.
+- **Color palettes are starting points**: The listed colors are canonical for each style, but real implementations vary. Don't rigidly enforce — let the design brief and mood board take priority.
+- **Missing styles**: If a user requests a style not in this guide (e.g., Steampunk, Cottagecore, Memphis), research it rather than approximating with the closest listed style. Be transparent about gaps.

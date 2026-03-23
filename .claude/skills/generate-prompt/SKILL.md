@@ -72,3 +72,19 @@ Present the generated prompts in a clear format:
 2. Highlight style-specific keywords used (from style guide)
 3. Suggest 2-3 variations (different camera angles, lighting moods, or detail focus)
 4. Note any provider-specific limitations or tips
+
+## Session Relevant Skills
+
+- `/render` — the natural next step. Takes these prompts and sends them to AI providers. Suggest specific providers based on the style (e.g., Stability for texture-heavy styles, DALL-E for clean modern looks).
+- `/style-guide` — essential reference during prompt generation. Always pull keywords, materials, and colors from the style guide to ensure accuracy. Don't rely on memory — styles have specific vocabulary.
+- `/mood-board` — if the user came here without a mood board, the prompts may lack atmospheric depth. Suggest /mood-board first for complex or ambiance-heavy styles (Wabi-Sabi, Bohemian, Biophilic).
+- `/design-consult` — if requirements are unclear (no room type, no style, no preferences), redirect to /design-consult rather than guessing.
+- `/compare-models` — after /render with multiple providers, /compare-models evaluates which output is best.
+- `/edit-design` — if the user has a reference image and wants prompts based on it, redirect to /edit-design which handles scene analysis before prompt generation.
+
+## Gotchas
+
+- **Provider prompt lengths differ wildly**: DALL-E 3 = under 400 chars. Midjourney = flowing description. Stability = comma-separated keywords. Don't use one format for all providers.
+- **Negative prompts are not universal**: Only Stability AI uses explicit negative prompts. Don't add negative prompt sections for DALL-E or Gemini — they ignore or misinterpret them.
+- **"All providers" is expensive**: Generating for all 6 providers means 6 API calls. Ask the user if they really want all, or suggest 2-3 best providers for their style.
+- **Style keywords order matters**: Put the most important style descriptors first. AI models weight earlier tokens more heavily. Room type and style should lead, decorative details follow.

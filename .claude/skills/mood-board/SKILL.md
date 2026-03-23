@@ -63,3 +63,18 @@ Brief evocative description engaging multiple senses:
 Present as a structured document with clear sections. End with:
 - Suggested next step: `/generate-prompt [style] [room]` to create AI prompts from this mood board
 - Note which elements are most important to capture in the prompt
+
+## Session Relevant Skills
+
+- `/generate-prompt` — the natural next step. Converts this mood board into provider-optimized prompts. Pass the key elements (materials, colors, furniture, lighting mood) as input.
+- `/design-consult` — should have been used before this skill. If the user jumps straight to mood board without a design brief, suggest running /design-consult first to clarify requirements.
+- `/style-guide` — reference when building the mood board. Use style-specific vocabulary to ensure the mood board accurately represents the chosen style.
+- `/render` — after generating prompts from this mood board, /render sends them to AI providers.
+- `/refine` — if a previous render didn't capture the mood board's intent, use /refine to adjust the prompt based on what went wrong.
+
+## Gotchas
+
+- **Mood board is not a prompt**: Don't write the mood board in prompt-style language. It should read like a creative brief — evocative, sensory, descriptive. /generate-prompt handles the translation to provider-specific format.
+- **Don't overload with elements**: 5-8 furniture pieces max. Too many elements create cluttered, unrealistic renders downstream.
+- **Color hex codes must be realistic**: Don't invent hex codes. Use established palettes for the style (reference /style-guide colors).
+- **Sensory section is not optional**: The sensory experience section differentiates a good mood board from a shopping list. It captures atmosphere that pure keywords miss.

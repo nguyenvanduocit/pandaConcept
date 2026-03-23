@@ -79,3 +79,20 @@ Track refinement iterations so the user can see progression:
 - Iteration 3: [feedback] → [changes]
 
 This history helps identify patterns in what works for specific styles and providers.
+
+## Session Relevant Skills
+
+- `/render` — after generating the refined prompt, use /render to execute it. Always render with the same provider as the original unless suggesting a provider switch.
+- `/compare-models` — if refinement isn't working with one provider, render the refined prompt across multiple providers via /render, then /compare-models to find a better fit.
+- `/generate-prompt` — if after 3+ refinement iterations the result is still poor, the base prompt may be fundamentally flawed. Go back to /generate-prompt to rebuild from scratch rather than patching.
+- `/style-guide` — reference when feedback involves style accuracy. "It doesn't look Japandi enough" → check /style-guide for missing Japandi keywords.
+- `/edit-design` — if feedback is about specific objects ("the sofa looks wrong", "add a plant in the corner"), /edit-design with inpainting may be more effective than prompt refinement.
+- `/mood-board` — if the render consistently misses the "feel" of the space, the issue may be upstream. A mood board captures atmosphere better than prompt keywords alone.
+
+## Gotchas
+
+- **Don't refine forever**: After 3-4 iterations with diminishing returns, either switch providers or rebuild the prompt from scratch via /generate-prompt. Prompt patching has limits.
+- **Track what changed**: Always show the diff between old and new prompts. Without tracked changes, refinement becomes random prompt mutation.
+- **Provider switch is a valid refinement**: Sometimes the issue isn't the prompt — it's the provider. Stability handles textures differently than DALL-E. Suggest switching when the feedback pattern matches a known provider weakness.
+- **Refinement is not editing**: /refine adjusts the prompt for a fresh render. If the user wants to keep 90% of an existing image and change 10%, that's /edit-design territory.
+- **Feedback must be specific**: "It doesn't look good" is unusable. Guide the user through the refinement categories (style, color, composition, detail, realism) to get actionable feedback.

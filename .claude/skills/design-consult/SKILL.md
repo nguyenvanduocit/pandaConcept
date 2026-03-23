@@ -71,6 +71,21 @@ Compile everything into a structured design brief:
 ```
 
 After delivering the brief, suggest next actions:
+- `/mood-board` to generate a visual mood board description from this brief
 - `/generate-prompt` to create AI rendering prompts based on this brief
-- `/mood-board` to generate a visual mood board description
 - `/render` to send prompts directly to AI providers
+
+## Session Relevant Skills
+
+- `/mood-board` — natural next step after consultation. Takes your design brief and expands it into a rich sensory description. Use when the client wants to "feel" the space before rendering.
+- `/generate-prompt` — skip mood board and go straight to prompts. Use when requirements are already detailed enough or the user is in a hurry.
+- `/style-guide` — reference during Step 2 (style recommendation). Essential when the user's style preference is vague or when recommending fusion styles.
+- `/render` — jump straight to rendering if the user already has a clear prompt. Rarely used directly after consult — usually goes through /generate-prompt first.
+- `/edit-design` — if the user arrives with a reference image instead of starting from scratch, redirect to /edit-design. Don't try to consult on an existing image here.
+
+## Gotchas
+
+- **Don't skip style recommendation**: Even if the user says "I want Scandinavian", still present alternatives — they may not know about Japandi or Nordic variants that better match their mood.
+- **Budget affects everything**: A "luxury Minimalist" and "budget Minimalist" produce completely different material palettes. Always clarify budget before recommending materials.
+- **Climate matters for materials**: Don't recommend wool rugs for tropical climates or rattan for cold/humid areas. Cross-reference location if provided.
+- **The brief is the contract**: Everything downstream (mood board, prompts, renders) builds on this brief. Incomplete or vague briefs cascade into poor renders. Be thorough here.

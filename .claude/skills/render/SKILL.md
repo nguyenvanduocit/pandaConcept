@@ -81,3 +81,19 @@ Present results:
 - Rate limiting: suggest waiting or trying another provider
 - Content filtering: adjust prompt and retry
 - API errors: show error details and suggest fixes
+
+## Session Relevant Skills
+
+- `/compare-models` — if multiple providers were used, suggest /compare-models to evaluate outputs side-by-side. This is the natural next step after multi-provider rendering.
+- `/refine` — if the user is unhappy with the output, /refine takes the prompt + feedback and generates an improved version. Don't manually tweak prompts — /refine tracks iteration history.
+- `/generate-prompt` — if no prompt is provided, redirect to /generate-prompt first. Don't accept vague descriptions as render input — proper prompt engineering makes the difference.
+- `/edit-design` — if the user wants to modify a rendered result, /edit-design analyzes the output image and generates targeted edit prompts.
+- `/style-guide` — reference when troubleshooting style accuracy issues. If renders don't match the expected style, check if the right keywords were used.
+
+## Gotchas
+
+- **Always save before displaying**: Save images to `output/[style]/[provider]/` before showing results. If the API returns URLs (OpenAI, Grok), download them — URLs expire.
+- **Don't render without a proper prompt**: Vague inputs like "make a nice living room" produce poor results. Redirect to /generate-prompt.
+- **API keys are per-provider**: Each provider needs its own env var. Check the specific one, don't just say "check your API keys".
+- **Gemini image generation model changes frequently**: Verify the current model name in the provider code before calling. Don't hardcode model IDs in prompts.
+- **Cost awareness**: DALL-E HD costs ~$0.08/image, Stability ~$0.03, Grok varies. Warn the user before "render all providers".

@@ -74,3 +74,18 @@ Evaluate each provider's output on:
 ```
 
 Suggest `/refine` for the most promising output to iterate further.
+
+## Session Relevant Skills
+
+- `/refine` — after identifying the best provider output, use /refine to iterate on that specific prompt+provider combination. Pass the original prompt and specific feedback from the comparison.
+- `/render` — if the comparison reveals all outputs are poor, consider re-rendering with adjusted prompts. Go back to /generate-prompt if the prompts themselves need rework.
+- `/generate-prompt` — if comparison shows systematic prompt issues (wrong style keywords, bad composition across all providers), the prompts need regeneration, not refinement.
+- `/style-guide` — reference when evaluating style accuracy. Use the style's specific keywords/materials/colors as the ground truth for scoring.
+- `/edit-design` — if one render is close but needs specific changes (swap a piece of furniture, adjust lighting), /edit-design can target those changes rather than re-rendering from scratch.
+
+## Gotchas
+
+- **Compare apples to apples**: Ensure all images used the same (or equivalent) prompt. Different prompts produce different styles — that's a prompt issue, not a provider issue.
+- **Don't compare more than 4-5 providers at once**: The comparison table becomes unwieldy. Focus on 2-3 most promising providers.
+- **Provider strengths are style-dependent**: Stability excels at textured/rustic styles, DALL-E at clean modern, Midjourney at atmospheric/dramatic. A provider ranking for Scandinavian may be reversed for Baroque.
+- **Practical value matters most**: A slightly less photorealistic image that clearly communicates the design intent is more useful than a photorealistic image with wrong style elements.
