@@ -7,18 +7,54 @@ description: Edit an existing interior design image — analyze objects, style, 
 
 Analyze a reference interior design image, identify what the user wants to change, and generate targeted prompts that preserve unchanged elements while modifying specific aspects.
 
-## Auto-Preprocessing (MANDATORY)
+## Auto-Preprocessing (MANDATORY — run before any analysis)
 
-**Before ANY analysis**, check and run preprocessing automatically:
+**Before ANY analysis**, run these checks to determine what's available:
 
-1. **Check for existing control maps**: Look in `references/preprocessed/` for depth_map.png, canny_edge.png
-2. **If missing → run `/preprocess-room`** on the reference image automatically (do NOT ask user)
-3. **Determine edit scope**:
-   - User wants to change **specific element** (sofa, walls, floor) → also run `/mask-room` for that element
-   - User wants **full style change** → use structure control (depth map) for rendering
-   - User wants **minor adjustment** (color, lighting) → inpainting with broad mask may suffice
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/depth_map.png 2>/dev/null && echo "HAS_DEPTH=true" || echo "HAS_DEPTH=false"
+```
 
-This step is silent — just do it, don't explain to the user unless they ask.
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/canny_edge.png 2>/dev/null && echo "HAS_CANNY=true" || echo "HAS_CANNY=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/semantic_analysis.json 2>/dev/null && echo "HAS_SEMANTIC=true" || echo "HAS_SEMANTIC=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/segmentation.png 2>/dev/null && echo "HAS_SEGMENTATION=true" || echo "HAS_SEGMENTATION=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/masks/*.png 2>/dev/null && echo "HAS_MASKS=true" || echo "HAS_MASKS=false"
+```
+
+### Decision Logic
+
+```
+HAS_DEPTH=false OR HAS_SEMANTIC=false?
+└── Run /preprocess-room on the reference image AUTOMATICALLY (do NOT ask user).
+    Wait for completion before proceeding to analysis.
+
+HAS_SEMANTIC=true?
+└── Read semantic_analysis.json — use it for Scene Inventory (Step 1) instead of re-analyzing manually.
+    This gives you accurate style, materials, colors, lighting from Gemini Vision.
+
+User wants specific element change (sofa, walls, floor)?
+├── HAS_SEGMENTATION=true → Use segmentation to identify element boundaries
+├── HAS_MASKS=true for that element → Reuse existing mask
+└── Neither → Run /mask-room for target element
+
+User wants full style change?
+└── Use structure control (depth map) for rendering — HAS_DEPTH must be true
+
+User wants minor adjustment (color, lighting)?
+└── Inpainting with broad mask may suffice
+```
+
+**This step is silent** — just do it, don't explain to the user unless they ask.
 
 ## Input Requirements
 

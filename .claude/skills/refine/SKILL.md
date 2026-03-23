@@ -7,6 +7,45 @@ description: Iteratively refine image generation prompts based on feedback about
 
 Improve interior design renders through systematic prompt refinement based on user feedback.
 
+## Preprocessing Check (MANDATORY — run before refining)
+
+**Before refining any prompt**, check for preprocessed control maps and masks. This affects refinement strategy.
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/ 2>/dev/null && echo "HAS_CONTROL_MAPS=true" || echo "HAS_CONTROL_MAPS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/masks/ 2>/dev/null && echo "HAS_MASKS=true" || echo "HAS_MASKS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+### Decision Logic
+
+```
+HAS_REFERENCE=true AND HAS_CONTROL_MAPS=false?
+└── STOP. Run /preprocess-room FIRST. Cannot refine properly without knowing if layout control is available.
+
+HAS_CONTROL_MAPS=true BUT previous prompt was text-to-image (no structure keywords)?
+└── This is a ROOT CAUSE issue — the original prompt ignored available control maps.
+    Don't patch the prompt. Rebuild it in STRUCTURE CONTROL MODE:
+    - Remove room geometry descriptions (depth map handles this)
+    - Add "preserving room layout", "maintaining spatial structure"
+    - Focus prompt on style, materials, colors, atmosphere
+    - Suggest re-rendering via structure control API instead of text-to-image
+
+HAS_MASKS=true BUT previous render used full generation (not inpainting)?
+└── Suggest switching to INPAINTING MODE for targeted changes instead of refining the full prompt.
+
+HAS_CONTROL_MAPS=true AND previous prompt already uses structure mode?
+└── Refine normally, but keep structural keywords intact. Focus refinement on style/material/color/lighting only.
+```
+
+**Mode-aware refinement is automatic.** If control maps exist but weren't used, that's the real problem — not the prompt wording.
+
 ## Input
 
 Gather from user or `$ARGUMENTS`:

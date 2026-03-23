@@ -7,6 +7,48 @@ description: Create precise masks for targeted room editing using SAM2 segmentat
 
 Generate precise binary masks that isolate specific room elements for inpainting. Instead of regenerating the entire room, masks allow surgical edits — change only the sofa, repaint only the walls, replace only the flooring — while preserving everything else pixel-perfectly.
 
+## Pre-flight Checks (MANDATORY — run before masking)
+
+**Before masking**, check what resources are available to choose the best method.
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/segmentation.png 2>/dev/null && echo "HAS_SEGMENTATION=true" || echo "HAS_SEGMENTATION=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/masks/*.png 2>/dev/null && echo "HAS_EXISTING_MASKS=true" || echo "HAS_EXISTING_MASKS=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/renders/*.png 2>/dev/null && echo "HAS_RENDERS=true" || echo "HAS_RENDERS=false"
+```
+
+### Decision Logic
+
+```
+HAS_REFERENCE=false AND HAS_RENDERS=false?
+└── STOP. No source image to mask. Ask user to provide an image.
+
+HAS_EXISTING_MASKS=true?
+└── List existing masks. Ask user: reuse existing mask, create new one, or combine?
+
+Target is a zone (wall, floor, ceiling) AND HAS_SEGMENTATION=true?
+└── Use Method 3 (Semantic Auto-Mask from segmentation) — fastest, no interaction needed.
+
+Target is a zone BUT HAS_SEGMENTATION=false?
+└── Run /preprocess-room first (segmentation only) — then use Method 3.
+    OR fall back to Method 1/2 (SAM2 point/box) if user prefers immediate results.
+
+Target is a specific object (sofa, lamp, plant)?
+└── Use Method 1 (SAM2 Point) or Method 2 (SAM2 Box) — segmentation too coarse for individual objects.
+```
+
+**Choose the lightest method that achieves the goal.** Zone masking from segmentation is instant; SAM2 requires model loading.
+
 ## Input
 
 Gather from the user (ask if not provided via `$ARGUMENTS`):

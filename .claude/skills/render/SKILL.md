@@ -14,20 +14,50 @@ Execute image generation by sending prompts to AI provider APIs and managing the
 
 ## Auto-Routing (MANDATORY — do NOT skip)
 
-**Before rendering**, automatically detect the rendering mode:
+**Before rendering**, run these checks to detect the rendering mode automatically:
 
 ```
-Check project references/:
-├── references/masks/*.png exists?
-│   └── YES → INPAINTING MODE (mask + image + prompt → inpaint API)
-├── references/preprocessed/depth_map.png exists?
-│   └── YES → STRUCTURE CONTROL MODE (depth/control map + prompt → structure API)
-└── Neither exists but user provided a reference photo?
-    └── YES → Run /preprocess-room FIRST, then → STRUCTURE CONTROL MODE
-    └── NO  → TEXT-TO-IMAGE MODE (prompt only, like before)
+!ls projects/${PROJECT_NAME}/references/masks/*.png 2>/dev/null && echo "HAS_MASKS=true" || echo "HAS_MASKS=false"
 ```
 
-**Mode selection is automatic.** Do not ask the user which mode to use. If control maps exist, USE THEM.
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/depth_map.png 2>/dev/null && echo "HAS_DEPTH=true" || echo "HAS_DEPTH=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/preprocessed/semantic_analysis.json 2>/dev/null && echo "HAS_SEMANTIC=true" || echo "HAS_SEMANTIC=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/references/*.{jpg,jpeg,png,webp} 2>/dev/null && echo "HAS_REFERENCE=true" || echo "HAS_REFERENCE=false"
+```
+
+```
+!ls projects/${PROJECT_NAME}/prompts/ 2>/dev/null && echo "HAS_PROMPTS=true" || echo "HAS_PROMPTS=false"
+```
+
+### Mode Selection (automatic — do NOT ask user)
+
+```
+HAS_MASKS=true?
+└── INPAINTING MODE (mask + image + prompt → inpaint API)
+    Providers: Stability AI /edit/inpaint, OpenAI DALL-E edit
+
+HAS_DEPTH=true?
+└── STRUCTURE CONTROL MODE (depth/control map + prompt → structure API)
+    Providers: Stability AI /control/structure, Flux depth-pro
+
+HAS_REFERENCE=true AND HAS_DEPTH=false?
+└── STOP. Run /preprocess-room FIRST. Do NOT render without control maps when a reference photo exists.
+
+None of the above?
+└── TEXT-TO-IMAGE MODE (prompt only)
+    Providers: Any (OpenAI, Gemini, Stability, Grok, Flux)
+```
+
+**If control maps exist, USE THEM.** Never fall back to text-to-image when structure data is available.
+
+If `HAS_SEMANTIC=true`, read `semantic_analysis.json` to cross-check that the prompt matches the room's actual characteristics (style, materials, lighting). Warn if prompt contradicts analysis data.
 
 **Provider routing by mode:**
 - **Inpainting**: Stability AI (`/edit/inpaint`) or OpenAI (DALL-E edit) — ONLY these support masks
@@ -59,13 +89,37 @@ response = client.images.generate(
 )
 ```
 
-**Google Gemini (Imagen)**:
+**Google Gemini (Image Generation / Editing)**:
 ```python
-import google.generativeai as genai
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel("gemini-2.0-flash-exp")  # or imagen model
-response = model.generate_content(prompt)
+from google import genai
+from google.genai import types
+from PIL import Image
+
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+
+# Text-to-image
+response = client.models.generate_content(
+    model="gemini-3.1-flash-image-preview",
+    contents=[prompt],
+    config=types.GenerateContentConfig(response_modalities=["IMAGE", "TEXT"]),
+)
+
+# Image editing (pass reference image + edit instruction)
+ref_image = Image.open(image_path)
+response = client.models.generate_content(
+    model="gemini-3.1-flash-image-preview",
+    contents=[ref_image, edit_prompt],
+    config=types.GenerateContentConfig(response_modalities=["IMAGE", "TEXT"]),
+)
+
+# Extract output image
+for part in response.candidates[0].content.parts:
+    if part.inline_data:
+        with open(output_path, "wb") as f:
+            f.write(part.inline_data.data)
 ```
+> **SDK**: Use `google-genai` (`pip install google-genai`), NOT the deprecated `google.generativeai`.
+> Gemini doesn't need an explicit mask for editing — describe what to change in text.
 
 **Stability AI**:
 ```python
@@ -144,6 +198,41 @@ def render_inpaint(prompt, image_path, mask_path, api_key):
     return response.content
 ```
 
+**fal.ai Flux Inpainting** (recommended for mask-based edits — fast, high quality):
+```python
+import fal_client
+import base64, os, requests
+
+os.environ["FAL_KEY"] = "your-fal-key"  # format: {key_id}:{key_secret}
+
+def to_data_uri(path, mime="image/png"):
+    with open(path, "rb") as f:
+        return f"data:{mime};base64,{base64.b64encode(f.read()).decode()}"
+
+def render_inpaint_flux(prompt, image_path, mask_path, output_path):
+    """Inpaint via fal.ai Flux — supports mask-based editing."""
+    result = fal_client.subscribe(
+        "fal-ai/flux-general/inpainting",  # CORRECT endpoint (not flux/dev/inpainting)
+        arguments={
+            "prompt": prompt,
+            "image_url": to_data_uri(image_path, "image/jpeg"),
+            "mask_url": to_data_uri(mask_path, "image/png"),
+            "image_size": {"width": 960, "height": 1280},
+            "num_images": 1,
+            "strength": 0.95,  # higher = more change in masked area
+        },
+        with_logs=False,
+    )
+    img_url = result["images"][0]["url"]
+    img_data = requests.get(img_url).content
+    with open(output_path, "wb") as f:
+        f.write(img_data)
+    return output_path
+```
+> **IMPORTANT**: The correct fal.ai model path is `fal-ai/flux-general/inpainting`.
+> Do NOT use `fal-ai/flux/dev/inpainting` (404) or raw HTTP polling (use SDK instead).
+> Images must be passed as base64 data URIs. Install: `pip install fal-client`.
+
 ### Step 3: Output Management
 - Save generated images to `output/[style]/[provider]/[timestamp].png`
 - Display image paths and metadata
@@ -179,7 +268,8 @@ Present results:
 - **Always save before displaying**: Save images to `output/[style]/[provider]/` before showing results. If the API returns URLs (OpenAI, Grok), download them — URLs expire.
 - **Don't render without a proper prompt**: Vague inputs like "make a nice living room" produce poor results. Redirect to /generate-prompt.
 - **API keys are per-provider**: Each provider needs its own env var. Check the specific one, don't just say "check your API keys".
-- **Gemini image generation model changes frequently**: Verify the current model name in the provider code before calling. Don't hardcode model IDs in prompts.
+- **Gemini model**: Use `gemini-3.1-flash-image-preview` for image generation/editing. Use SDK `google-genai` (NOT deprecated `google.generativeai`).
+- **fal.ai inpainting**: Use `fal-ai/flux-general/inpainting` endpoint. Always use `fal_client` SDK, not raw HTTP. Use strong repetitive prompts for material/color changes (e.g., "solid bright gold metallic, 24 karat gold plated" not just "gold").
 - **Cost awareness**: DALL-E HD costs ~$0.08/image, Stability ~$0.03, Grok varies. Warn the user before "render all providers".
 - **Layout-controlled rendering requires preprocessing first**: Don't skip `/preprocess-room`. Without control maps, you're back to text-only generation which can't guarantee layout preservation.
 - **control_strength tuning**: Start at 0.7 for Stability structure, 0.85 for Flux depth. Higher = more layout fidelity but less style freedom. Lower = more creative but may distort room shape.
