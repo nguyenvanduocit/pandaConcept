@@ -153,13 +153,20 @@ Compare user's request against the scene inventory:
 
 Generate prompts per provider, incorporating the diff. Use style keywords from `/style-guide` for the target style.
 
+**IMPORTANT — Visual Context for Gemini**: When rendering via Gemini, the `/render` skill will automatically attach all available preprocessed maps (depth, segmentation, masks) alongside the original image. Your edit prompt should reference these maps when relevant:
+- If depth map exists → mention "preserve the spatial layout shown in the depth map"
+- If segmentation exists → mention specific zones by name (e.g., "change only the wall zones visible in the segmentation map")
+- If masks exist → mention "apply changes only to the masked area"
+
+This gives Gemini multimodal context to understand room structure beyond just the photo.
+
 #### Full Re-render Prompt
 
 For providers without edit/inpainting APIs — generate a complete prompt that describes the final desired result, preserving unchanged layout/composition while incorporating all changes.
 
 Follow the provider-specific prompt structures from `/generate-prompt`:
 - **OpenAI**: Under 400 chars, explicit photorealism
-- **Gemini**: Structured sections (Features/Atmosphere/Style)
+- **Gemini**: Structured sections (Features/Atmosphere/Style) — prompt can reference depth/segmentation context since those images are sent alongside
 - **Stability AI**: Positive + Negative prompt, keyword style
 - **Midjourney**: Flowing description + parameters
 - **Grok**: Structured with mood/lighting sections

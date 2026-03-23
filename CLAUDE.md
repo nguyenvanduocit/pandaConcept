@@ -83,7 +83,7 @@ pandaConcept/
 
 ## Design Workflow Skills
 
-12 skills available via slash commands. They connect into 6 main flows:
+13 skills available via slash commands. They connect into 7 main flows:
 
 ### Flow 0: Design Interview (Recommended start — vague requirements)
 
@@ -142,6 +142,14 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 
 1. **`/refine`** — Nhận prompt cũ + feedback → phân tích vấn đề (style, color, composition, detail, realism) → sinh prompt mới với tracked diff → gợi ý đổi provider nếu cần
 
+### Flow 6: Video Generation (animate renders into cinematic videos)
+
+```
+Room renders → /generate-video (image-to-video) → /generate-video (extend) → /generate-video (merge tour) → /generate-video (upscale)
+```
+
+1. **`/generate-video`** — Tạo video từ renders hoặc text prompts sử dụng Veo (Gemini) và fal.ai. Hỗ trợ 6 mode: text-to-video, image-to-video, video extension (nối clip dài hơn), frame interpolation (before/after transition), room tour (merge nhiều clip), video upscaling. Output lưu vào `renders/videos/`.
+
 ### Reference & Utility Skills
 
 - **`/style-guide`** — Tra cứu 42 design styles (keywords, materials, colors, characteristics). Được dùng bởi các skill khác khi cần vocabulary chính xác cho từng style.
@@ -171,6 +179,14 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
       /validate-layout
              │
       /compare-models
+             │
+      /generate-video ← (animate renders thành video)
+          │
+          ├── image-to-video (từ render)
+          ├── extend (nối clip dài hơn)
+          ├── interpolate (before/after transition)
+          ├── tour (merge nhiều phòng)
+          └── upscale (tăng resolution video)
 ```
 
 ## Project Context Rules (CRITICAL)
@@ -197,14 +213,15 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 - `/refine` → đọc `notes.md` (feedback cũ) + prompt cũ từ `prompts/`
 - `/edit-design` → đọc `brief.md` + ảnh gốc từ `references/`
 - `/compare-models` → đọc renders từ `renders/`, ghi kết quả vào `notes.md`
+- `/generate-video` → đọc renders từ `renders/` (image-to-video) hoặc prompts từ `prompts/` (text-to-video), output lưu vào `renders/videos/`
 
 **AUTO-TRIGGER Rules (CRITICAL — tự động làm, KHÔNG cần user nhắc):**
 
 Khi user **đưa ảnh phòng** (reference photo, ảnh hiện trạng, ảnh phòng thật):
-1. Tự động chạy `/preprocess-room` → extract depth + canny + segmentation
-2. Lưu control maps vào `references/preprocessed/`
-3. Khi render, tự động dùng layout-controlled API (Stability structure / Flux depth-pro)
-4. Sau khi render, tự động chạy `/validate-layout` → báo SSIM score
+1. Xác định intent: **EDIT** (enhance, thêm detail, sáng hơn, realistic hơn) hay **REDESIGN** (đổi style hoàn toàn)?
+2. Nếu **EDIT** → dùng Gemini image editing trực tiếp (image + text instruction), KHÔNG cần preprocess
+3. Nếu **REDESIGN** → tự động chạy `/preprocess-room` → extract depth + canny + segmentation → lưu vào `references/preprocessed/` → dùng layout-controlled API
+4. Sau khi render từ redesign, tự động chạy `/validate-layout` → báo SSIM score
 
 Khi user **yêu cầu thay đổi một phần** ("đổi sofa", "sơn lại tường", "thay sàn"):
 1. Tự động chạy `/mask-room` → tạo mask cho element cần đổi
@@ -224,22 +241,34 @@ Khi **render xong** (bất kỳ render nào từ reference photo):
 **Decision tree cho `/render`:**
 ```
 Có ảnh gốc?
-├── YES → Có preprocessed maps?
-│         ├── YES → Có mask?
-│         │         ├── YES → Inpainting API (Stability/OpenAI)
-│         │         └── NO  → Structure control API (Stability/Flux)
-│         └── NO  → Chạy /preprocess-room trước → quay lại YES
+├── YES → User muốn gì?
+│         ├── EDIT (enhance, add details, adjust tone, fix elements)
+│         │   └── IMAGE EDITING MODE → Gemini (image + text instruction, không cần preprocess)
+│         │
+│         └── REDESIGN (đổi style, thiết kế lại hoàn toàn)
+│             ├── Có preprocessed maps?
+│             │   ├── YES → Có mask?
+│             │   │         ├── YES → Inpainting API (Stability/OpenAI)
+│             │   │         └── NO  → Structure control API (Stability/Gemini)
+│             │   └── NO  → Chạy /preprocess-room trước → quay lại YES
+│             └── (KHÔNG BAO GIỜ skip preprocess cho redesign)
 └── NO  → Text-to-image bình thường (như cũ)
 ```
+
+**EDIT vs REDESIGN:**
+- **Edit** = enhance/tweak ảnh hiện có (thêm detail, sáng hơn, realistic hơn, đổi màu) → Gemini image editing trực tiếp, KHÔNG cần depth map
+- **Redesign** = đổi style hoàn toàn, giữ layout → BẮT BUỘC có depth map + structure control
 
 **KHÔNG BAO GIỜ:**
 - Generate prompt mà không đọc `style-config.yaml` trước
 - Render mà không biết đang làm project nào
 - Bỏ qua feedback trong `notes.md` khi refine
 - Quên cập nhật `rooms.md` (render status) sau khi render xong
-- Render từ ảnh reference mà không preprocess trước (depth map là BẮT BUỘC)
-- Bỏ qua validate-layout khi đã có depth map gốc
+- Render REDESIGN từ ảnh reference mà không preprocess trước (depth map là BẮT BUỘC cho redesign)
+- Bỏ qua validate-layout khi đã có depth map gốc (chỉ áp dụng cho redesign, không cần cho edit)
 - Dùng text-to-image khi đã có control maps (phải dùng structure control)
+- Dùng sai Gemini model — CHỈ dùng `gemini-3.1-flash-image-preview`. Google trả error misleading ("API key expired", 404) khi model name sai
+- Hỏi user API key khi key đã có trong `CLAUDE.local.md`
 
 ## Conventions
 
