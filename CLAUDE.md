@@ -65,6 +65,8 @@ pandaConcept/
 │       ├── notes.md        #   Feedback, revision history, internal notes
 │       ├── prompts/        #   Generated prompts for this project
 │       ├── references/     #   Client reference images
+│       │   ├── preprocessed/  # Depth maps, edge maps, segmentation (from /preprocess-room)
+│       │   └── masks/         # Binary masks for inpainting (from /mask-room)
 │       └── renders/        #   Output renders from providers
 ├── tests/                  # Test suite
 ├── .claude/skills/         # Claude Code skills for design workflows
@@ -81,7 +83,7 @@ pandaConcept/
 
 ## Design Workflow Skills
 
-9 skills available via slash commands. They connect into 4 main flows:
+12 skills available via slash commands. They connect into 6 main flows:
 
 ### Flow 0: Design Interview (Recommended start — vague requirements)
 
@@ -103,7 +105,28 @@ pandaConcept/
 4. **`/render`** — Gửi prompt đến API providers → lưu ảnh vào `output/[style]/[provider]/`
 5. **`/compare-models`** — So sánh output nhiều providers (style accuracy, photorealism, composition, detail, color fidelity)
 
-### Flow 2: Edit Design (from reference image)
+### Flow 2: Redesign from Reference Photo (layout-preserving)
+
+```
+Ảnh phòng gốc → /preprocess-room → /generate-prompt → /render (with control maps) → /validate-layout → /compare-models
+```
+
+1. **`/preprocess-room`** — Extract depth map + canny edge + MLSD + segmentation từ ảnh phòng gốc → lưu vào `references/preprocessed/`. Bước BẮT BUỘC khi muốn giữ layout.
+2. **`/generate-prompt`** — Sinh prompt theo style mới
+3. **`/render`** — Gửi prompt + control maps đến Stability AI `/control/structure` hoặc Flux depth-pro → ảnh mới giữ đúng hình khối phòng gốc
+4. **`/validate-layout`** — So sánh depth map trước/sau bằng SSIM → chấm điểm layout preservation (>= 0.70 = PASS)
+
+### Flow 3: Targeted Element Editing (surgical changes)
+
+```
+Ảnh phòng → /mask-room → /edit-design → /render (inpainting) → /validate-layout
+```
+
+1. **`/mask-room`** — SAM2-based masking: chọn vùng cần thay đổi (chỉ sofa, chỉ tường, chỉ sàn) → tạo binary mask
+2. **`/edit-design`** — Phân tích ảnh gốc + tạo edit prompt cho vùng mask
+3. **`/render`** — Gửi ảnh + mask + prompt đến inpainting API → chỉ vùng mask thay đổi, phần còn lại giữ nguyên pixel-perfect
+
+### Flow 4: Full Edit Design (from reference image, no layout control)
 
 ```
 User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
@@ -111,7 +134,7 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 
 1. **`/edit-design`** — Phân tích ảnh gốc (scene inventory: objects, surfaces, materials, colors, lighting, camera) → tạo change diff (KEEP/MODIFY/ADD/REMOVE) → sinh prompt mới giữ nguyên phần không đổi, chỉ sửa phần cần thay → hỗ trợ cả full re-render và inpainting prompt
 
-### Flow 3: Iterative Refinement
+### Flow 5: Iterative Refinement
 
 ```
 Ảnh chưa đạt → /refine → /render → lặp lại
@@ -119,9 +142,10 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 
 1. **`/refine`** — Nhận prompt cũ + feedback → phân tích vấn đề (style, color, composition, detail, realism) → sinh prompt mới với tracked diff → gợi ý đổi provider nếu cần
 
-### Reference Skill
+### Reference & Utility Skills
 
 - **`/style-guide`** — Tra cứu 42 design styles (keywords, materials, colors, characteristics). Được dùng bởi các skill khác khi cần vocabulary chính xác cho từng style.
+- **`/validate-layout`** — So sánh depth map gốc vs ảnh mới, chấm điểm SSIM. Dùng sau `/render` khi cần đảm bảo layout.
 
 ### Skill Connection Map
 
@@ -136,13 +160,15 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
     │                    │                    │
 /design-consult    /edit-design          /refine
     │                    │                    │
-/mood-board              │                    │
+/mood-board         /mask-room               │
     │                    │                    │
-/generate-prompt         │                    │
+/generate-prompt    /preprocess-room          │
     │                    │                    │
     └────────┬───────────┘                    │
              │                                │
           /render ←───────────────────────────┘
+             │
+      /validate-layout
              │
       /compare-models
 ```
@@ -164,7 +190,10 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 - `/design-interview` → đọc project files hiện có (nếu có) để pre-fill, output ghi vào `brief.md` + `rooms.md` + `style-config.yaml`
 - `/design-consult` → đọc `brief.md` trước, output ghi vào `brief.md` hoặc `notes.md`
 - `/generate-prompt` → đọc `style-config.yaml` + `rooms.md`, output lưu vào `prompts/`
-- `/render` → đọc prompt từ `prompts/`, output lưu vào `renders/`
+- `/preprocess-room` → đọc ảnh từ `references/`, output lưu vào `references/preprocessed/`
+- `/render` → đọc prompt từ `prompts/` + control maps từ `references/preprocessed/` (nếu có), output lưu vào `renders/`
+- `/mask-room` → đọc ảnh từ `references/` hoặc `renders/`, output lưu vào `references/masks/`
+- `/validate-layout` → đọc depth map từ `references/preprocessed/` + ảnh từ `renders/`, ghi kết quả vào `notes.md`
 - `/refine` → đọc `notes.md` (feedback cũ) + prompt cũ từ `prompts/`
 - `/edit-design` → đọc `brief.md` + ảnh gốc từ `references/`
 - `/compare-models` → đọc renders từ `renders/`, ghi kết quả vào `notes.md`

@@ -50,6 +50,12 @@ Evaluate each provider's output on:
 - Would it work as a design reference?
 - Does it communicate the design intent clearly?
 
+### 7. Layout Preservation (when comparing against reference photo)
+- Does the generated image maintain the original room's spatial layout?
+- Depth SSIM score (from `/validate-layout`): quantitative layout fidelity metric
+- Wall positions, window placements, furniture depth ordering preserved?
+- Rate: Identical / Good / Fair / Distorted
+
 ## Output Format
 
 ```
@@ -62,6 +68,7 @@ Evaluate each provider's output on:
 | Composition     |   ...  |  ...   |   ...     | ...  | ...  |
 | Detail Quality  |   ...  |  ...   |   ...     | ...  | ...  |
 | Color Fidelity  |   ...  |  ...   |   ...     | ...  | ...  |
+| Layout Fidelity |   ...  |  ...   |   ...     | ...  | ...  |
 
 ### Best For:
 - **Client presentation**: [provider] — [reason]
@@ -82,6 +89,8 @@ Suggest `/refine` for the most promising output to iterate further.
 - `/generate-prompt` — if comparison shows systematic prompt issues (wrong style keywords, bad composition across all providers), the prompts need regeneration, not refinement.
 - `/style-guide` — reference when evaluating style accuracy. Use the style's specific keywords/materials/colors as the ground truth for scoring.
 - `/edit-design` — if one render is close but needs specific changes (swap a piece of furniture, adjust lighting), /edit-design can target those changes rather than re-rendering from scratch.
+- `/validate-layout` — provides quantitative SSIM scores for layout comparison. Run on each provider's output to get objective layout fidelity metrics.
+- `/preprocess-room` — the source of truth for the original room's depth map used in layout comparison.
 
 ## Gotchas
 
@@ -89,3 +98,5 @@ Suggest `/refine` for the most promising output to iterate further.
 - **Don't compare more than 4-5 providers at once**: The comparison table becomes unwieldy. Focus on 2-3 most promising providers.
 - **Provider strengths are style-dependent**: Stability excels at textured/rustic styles, DALL-E at clean modern, Midjourney at atmospheric/dramatic. A provider ranking for Scandinavian may be reversed for Baroque.
 - **Practical value matters most**: A slightly less photorealistic image that clearly communicates the design intent is more useful than a photorealistic image with wrong style elements.
+- **Layout comparison only applies when there's a reference photo**: For text-only generations (no reference room), skip the layout criterion entirely.
+- **Different providers have different layout control capabilities**: Stability AI structure control and Flux depth-pro can preserve layout; DALL-E and Midjourney cannot. Factor this into comparisons.
