@@ -29,18 +29,21 @@ Reconnect with nature. Biophilia (E.O. Wilson, 1984) — the innate human need f
 ---
 
 ## Materials
-- **Live-edge hardwood (walnut, elm, oak)** — furniture, shelving, feature walls
-- **Craggy limestone / travertine** — floors, walls (texture variation)
-- **Cork (natural, unprocessed)** — floors, walls, acoustic panels
-- **Moss panel (preserved or living)** — feature wall system
-- **Bamboo (culm or strand-woven)** — flooring, cladding, furniture
-- **Rammed earth** — walls, feature panels
-- **Natural stone (quartzite, schist, basalt)** — feature walls, bathroom
-- **Woven grass (sisal, seagrass, jute)** — floor coverings, ceiling detail
-- **Untreated linen and hemp** — window coverings, upholstery
-- **Volcanic basalt (lava stone)** — sinks, surface tile
-- **Reclaimed hardwood (visible history)** — floors, cladding
-- **Clay and earthenware (unglazed)** — tableware, planters
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Live-edge hardwood (walnut, elm, oak) | Natural slab with uncut bark edge | Furniture, shelving, feature walls |
+| Craggy limestone / travertine | Textured natural stone with voids | Floors, walls |
+| Cork (natural, unprocessed) | Harvested bark, unfinished | Floors, walls, acoustic panels |
+| Moss panel (preserved or living) | Stabilized or hydroponic moss system | Feature wall system |
+| Bamboo (culm or strand-woven) | Solid culm or compressed strand board | Flooring, cladding, furniture |
+| Rammed earth | Compacted raw earth layers | Walls, feature panels |
+| Natural stone (quartzite, schist, basalt) | Varied geological stone types | Feature walls, bathroom surfaces |
+| Woven grass (sisal, seagrass, jute) | Natural plant fiber weave | Floor coverings, ceiling detail |
+| Untreated linen and hemp | Raw undyed natural fiber | Window coverings, upholstery |
+| Volcanic basalt (lava stone) | Dark dense volcanic rock | Sinks, surface tile |
+| Reclaimed hardwood (visible history) | Salvaged timber with patina and nail holes | Floors, cladding |
+| Clay and earthenware (unglazed) | Hand-formed fired clay | Tableware, planters |
 
 ---
 

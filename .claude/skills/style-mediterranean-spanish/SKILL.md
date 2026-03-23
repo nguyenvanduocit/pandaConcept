@@ -29,16 +29,19 @@ A layered cultural identity expressed through tile, ironwork, and courtyard. Spa
 ---
 
 ## Materials
-- **Andalusian terracotta** — floors, walls, roof tiles (unglazed)
-- **Talavera ceramic tile** — hand-painted polychrome; kitchen, bath, staircase
-- **Esparto grass** — woven furniture, baskets, mats
-- **Dark Spanish walnut** — furniture, window frames, heavy doors
-- **Forged iron** — window grilles, chandeliers, stair railings, furniture
-- **Hammered copper** — sinks, water features, accent objects
-- **Limestone** — structural; steps, fireplace surrounds, garden paving
-- **Red clay plaster** — interior walls warm finish
-- **Encaustic cement tile** — patterned floor tiles in geometric or floral
-- **Cork** — traditional flooring material in Iberian tradition
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Andalusian terracotta | Unglazed, locally fired | Floors, walls, roof tiles |
+| Talavera ceramic tile | Hand-painted polychrome | Kitchen, bath, staircase |
+| Esparto grass | Tough woven natural grass | Woven furniture, baskets, mats |
+| Dark Spanish walnut | Heavy dark hardwood | Furniture, window frames, heavy doors |
+| Forged iron | Blacksmith-crafted metal | Window grilles, chandeliers, stair railings, furniture |
+| Hammered copper | Hand-worked copper sheet | Sinks, water features, accent objects |
+| Limestone | Natural quarried stone | Steps, fireplace surrounds, garden paving |
+| Red clay plaster | Warm-toned earth plaster | Interior wall finish |
+| Encaustic cement tile | Patterned in geometric or floral | Floor tiles |
+| Cork | Traditional Iberian natural material | Flooring |
 
 ---
 

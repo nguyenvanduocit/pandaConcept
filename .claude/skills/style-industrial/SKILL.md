@@ -42,18 +42,21 @@ Raw structure + warm materials; plants; leather and linen softening; artisan cer
 ---
 
 ## Materials
-- **Exposed brick (London stock or NY red)** — feature walls, structural
-- **Polished or ground concrete** — flooring throughout
-- **Cast iron columns and beams** — structural; celebrated, not concealed
-- **Reclaimed scaffold boards** — shelving, furniture tops
-- **Railway sleeper (oak or pine)** — dining tables, benches
-- **Matte black steel** — frames, shelving, pendants, door hardware
-- **Distressed leather** — sofas, chairs (breaking-in period appreciated)
-- **Galvanized steel ducting** — HVAC exposed as design element
-- **Plate glass (oversized)** — windows, partitions, splashbacks
-- **Weathered copper pipe** — plumbing exposed; pendants; curtain rails
-- **Machine-pressed metal (perforated or punched)** — shelving panels, room dividers
-- **Old-growth reclaimed timber** — feature walls, bespoke furniture
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Exposed brick (London stock or NY red) | Raw fired clay, unplastered | Feature walls, structural elements |
+| Polished or ground concrete | Sealed or mechanically polished slab | Flooring throughout |
+| Cast iron columns and beams | Historic structural iron | Celebrated structural elements, not concealed |
+| Reclaimed scaffold boards | Weathered pine or fir planks | Shelving, furniture tops |
+| Railway sleeper (oak or pine) | Densely oiled heavy timber | Dining tables, benches |
+| Matte black steel | Powder-coated or raw steel | Frames, shelving, pendants, door hardware |
+| Distressed leather | Aged full-grain hide | Sofas, chairs |
+| Galvanized steel ducting | Zinc-coated sheet metal | Exposed HVAC as design element |
+| Plate glass (oversized) | Large-format industrial glazing | Windows, partitions, splashbacks |
+| Weathered copper pipe | Aged copper plumbing | Exposed plumbing, pendants, curtain rails |
+| Machine-pressed metal (perforated or punched) | Industrial sheet metal with pattern | Shelving panels, room dividers |
+| Old-growth reclaimed timber | Dense aged hardwood with patina | Feature walls, bespoke furniture |
 
 ---
 

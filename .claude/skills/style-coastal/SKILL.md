@@ -39,18 +39,21 @@ Sun-soaked informality; indoor-outdoor life; Queenslander timber heritage; light
 ---
 
 ## Materials
-- **Cedar (tongue-and-groove / shiplap)** — walls, ceilings, exterior
-- **Painted oak / maple** — millwork, cabinetry (Benjamin Moore White Dove standard)
-- **Sea-washed pine** — flooring, bleached and whitewashed
-- **Sisal and jute** — area rugs
-- **White limestone or marble** — kitchen countertops, fireplace surrounds
-- **Wicker / rattan** — lounge chairs, outdoor furniture
-- **Linen and cotton canvas** — upholstery, curtains
-- **Rope and natural twine** — hardware, pendant lights, decorative
-- **Glazed ceramic tile (subway white)** — kitchen and bath
-- **Aged brass or brushed nickel** — hardware, fixtures
-- **Bleached driftwood** — frames, decorative objects
-- **Sailcloth / Sunbrella outdoor fabric** — poolside, alfresco cushions
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Cedar (tongue-and-groove / shiplap) | Aromatic softwood, weathers to silver-grey | Walls, ceilings, exterior |
+| Painted oak / maple | Benjamin Moore White Dove standard finish | Millwork, cabinetry |
+| Sea-washed pine | Bleached and whitewashed finish | Flooring |
+| Sisal and jute | Natural plant fiber weave | Area rugs |
+| White limestone or marble | Light-toned natural stone | Kitchen countertops, fireplace surrounds |
+| Wicker / rattan | Woven natural cane | Lounge chairs, outdoor furniture |
+| Linen and cotton canvas | Natural breathable fabric | Upholstery, curtains |
+| Rope and natural twine | Twisted natural fiber | Hardware, pendant lights, decorative accents |
+| Glazed ceramic tile (subway white) | Classic white 3×6" ceramic | Kitchen and bath surfaces |
+| Aged brass or brushed nickel | Warm or cool metal finish | Hardware, fixtures |
+| Bleached driftwood | Sun-weathered natural wood | Frames, decorative objects |
+| Sailcloth / Sunbrella outdoor fabric | UV-resistant performance fabric | Poolside, alfresco cushions |
 
 ---
 

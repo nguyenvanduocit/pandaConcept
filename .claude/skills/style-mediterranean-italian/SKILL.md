@@ -29,17 +29,20 @@ Celebrate warm earthen beauty layered by centuries of civilization. Italian Medi
 ---
 
 ## Materials
-- **Travertine** — Roman classic; floors, walls, fountain basins, steps
-- **Carrara marble** — Tuscan white-grey; kitchen surfaces, bathroom, sculpture
-- **Pietra Serena (grey sandstone)** — Florentine architectural stone; doorframes, columns
-- **Terracotta** — unglazed and hand-painted majolica; floors, walls, pots
-- **Dark-stained walnut** — furniture, cabinetry, window frames
-- **Cherry wood** — Tuscan furniture, decorative paneling
-- **Wrought iron** — balustrades, chandeliers, furniture legs
-- **Murano glass** — pendants, chandeliers, decorative objects (Venetian)
-- **Silk and brocade** — curtains, upholstery, cushions
-- **Damask** — wall covering, upholstery, bed dressing
-- **Sicilian lava stone tiles** — floors and kitchen surfaces
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Travertine | Roman classic, warm cream tones | Floors, walls, fountain basins, steps |
+| Carrara marble | Tuscan white-grey veined | Kitchen surfaces, bathroom, sculpture |
+| Pietra Serena (grey sandstone) | Florentine architectural stone | Doorframes, columns |
+| Terracotta | Unglazed and hand-painted majolica | Floors, walls, pots |
+| Dark-stained walnut | Rich dark grain | Furniture, cabinetry, window frames |
+| Cherry wood | Warm reddish-brown hardwood | Tuscan furniture, decorative paneling |
+| Wrought iron | Hand-forged metal | Balustrades, chandeliers, furniture legs |
+| Murano glass | Hand-blown Venetian glass | Pendants, chandeliers, decorative objects |
+| Silk and brocade | Woven luxurious fabric | Curtains, upholstery, cushions |
+| Damask | Self-patterned woven textile | Wall covering, upholstery, bed dressing |
+| Sicilian lava stone tiles | Dark volcanic stone | Floors and kitchen surfaces |
 
 ---
 

@@ -42,18 +42,21 @@ Grand scale, ski chalet luxury, lakeside cabin grandeur. Plunge pools, stone soa
 ---
 
 ## Materials
-- **Douglas fir / pine logs** — structural walls, ceiling beams (American)
-- **Chestnut / oak timbers** — European farmhouse beams
-- **Granite / fieldstone** — fireplace surrounds, feature walls
-- **Flagstone (bluestone, sandstone)** — floors, hearth
-- **River rock** — mosaic feature walls, fireplace insert surrounds
-- **Reclaimed barn wood** — flooring, wall cladding, furniture
-- **Hand-forged iron** — chandeliers, door hardware, railings
-- **Cowhide (branded or natural)** — rugs, chair seats, throw pillows
-- **Tanned leather (saddle leather)** — seating, binding, strapping
-- **Wool and bouclé** — throws, upholstery
-- **Copper (hammered)** — sinks, pots, accent objects
-- **Antler** — light fixtures, handles, decorative (shed antler only — ethical)
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Douglas fir / pine logs | Structural softwood, golden-orange tone | Structural walls, ceiling beams (American) |
+| Chestnut / oak timbers | Dense European hardwoods | European farmhouse beams |
+| Granite / fieldstone | Rough-quarried or river-sourced stone | Fireplace surrounds, feature walls |
+| Flagstone (bluestone, sandstone) | Flat natural stone slabs | Floors, hearth |
+| River rock | Rounded water-smoothed stones | Mosaic feature walls, fireplace insert surrounds |
+| Reclaimed barn wood | Weathered salvaged timber with visible history | Flooring, wall cladding, furniture |
+| Hand-forged iron | Blacksmith-crafted wrought iron | Chandeliers, door hardware, railings |
+| Cowhide (branded or natural) | Tanned cattle hide | Rugs, chair seats, throw pillows |
+| Tanned leather (saddle leather) | Full-grain natural tanned hide | Seating, binding, strapping |
+| Wool and bouclé | Natural fiber textile | Throws, upholstery |
+| Copper (hammered) | Hand-worked copper sheet | Sinks, pots, accent objects |
+| Antler | Shed antler only (ethical sourcing) | Light fixtures, handles, decorative pieces |
 
 ---
 

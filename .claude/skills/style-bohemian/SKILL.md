@@ -42,18 +42,21 @@ Mid-point; luxury materials + bohemian spirit; Anthropologie aesthetic; curated 
 ---
 
 ## Materials
-- **Rattan (natural cane and core)** — chairs, headboards, screens, pendant lights
-- **Macramé (cotton cord)** — wall hangings, plant holders, room dividers
-- **Kilim (flat-weave Turkish/Moroccan rug)** — flooring layer
-- **Vintage teak or pine** — furniture, flooring
-- **Cotton velvet (aged)** — cushions, window seat covers
-- **Leather (weathered)** — poufs, floor seating
-- **Wicker** — baskets, hampers, trays
-- **Embroidered fabric (Indian mirror work)** — cushion covers, wall hangings
-- **Hand-blown glass** — pendant lights, vases
-- **Copper and brass (tarnished)** — lanterns, pots, fixtures
-- **Driftwood** — frames, shelf brackets, wall art
-- **Terracotta (handmade ceramic)** — pots, tableware, floor tile
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Rattan (natural cane and core) | Flexible woven natural cane | Chairs, headboards, screens, pendant lights |
+| Macramé (cotton cord) | Hand-knotted twisted cotton rope | Wall hangings, plant holders, room dividers |
+| Kilim (flat-weave Turkish/Moroccan rug) | Hand-woven geometric textile | Flooring layer |
+| Vintage teak or pine | Aged hardwood or softwood with patina | Furniture, flooring |
+| Cotton velvet (aged) | Worn soft-pile woven fabric | Cushions, window seat covers |
+| Leather (weathered) | Aged and worn full-grain hide | Poufs, floor seating |
+| Wicker | Open-weave natural fiber | Baskets, hampers, trays |
+| Embroidered fabric (Indian mirror work) | Hand-stitched with shisha glass mirrors | Cushion covers, wall hangings |
+| Hand-blown glass | Artisan glass with organic forms | Pendant lights, vases |
+| Copper and brass (tarnished) | Aged oxidized metal | Lanterns, pots, fixtures |
+| Driftwood | Sun-bleached weathered wood | Frames, shelf brackets, wall art |
+| Terracotta (handmade ceramic) | Hand-formed fired clay | Pots, tableware, floor tile |
 
 ---
 

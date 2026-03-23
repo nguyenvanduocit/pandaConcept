@@ -4,11 +4,13 @@ description: "Minimalist Interior Design interior design style — detailed refe
 ---
 
 # Minimalist Interior Design
-### Three Major Traditions: Japanese, Scandinavian, and Warm Minimalism
+### Two Traditions: Japanese Minimalism and Warm Minimalism
+
+> **Scandinavian Minimalism** is covered in its own dedicated skill: `/style-scandinavian`
 
 ---
 
-## 1A. Japanese Minimalism
+## A. Japanese Minimalism
 
 ### Philosophy
 Rooted in Zen Buddhism and the concept of *ma* (negative space). Every object must earn its place. Impermanence (*mujo*), imperfection (*fukanzen*), and incompleteness (*fukansei*) guide selection. Nothing decorative — only purposeful. Silence and emptiness are positive forces, not absences.
@@ -28,18 +30,21 @@ Rooted in Zen Buddhism and the concept of *ma* (negative space). Every object mu
 12. Natural light maximized; artificial lighting minimal and indirect
 
 ### Materials
-- **Hinoki cypress** — aromatic, pale blonde wood used for baths, flooring, joinery
-- **Sugi (Japanese cedar)** — warm grain, used for paneling and structural beams
-- **Bamboo** — flooring, screens, accent elements
-- **Washi paper** — shoji screens, pendant lights, wall panels
-- **River stones / pebble aggregate** — zen garden integration, bathroom floors
-- **Tamo ash** — furniture-grade hardwood with subtle grain
-- **Kiri (paulownia)** — ultra-lightweight storage furniture, traditional tansu
-- **Unglazed terracotta / Bizen ware ceramics** — earthy, fired accents
-- **Natural linen** — bedding, cushion covers
-- **Dark-stained oak or walnut** — modern Japanese-inspired furniture
-- **Sand and gravel** — karesansui (dry garden) elements brought indoors
-- **Rice straw tatami** — traditional flooring with scent and tactile quality
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Hinoki cypress | Aromatic pale blonde softwood | Baths, flooring, joinery |
+| Sugi (Japanese cedar) | Warm-grained softwood | Paneling and structural beams |
+| Bamboo | Fast-growing grass material | Flooring, screens, accent elements |
+| Washi paper | Hand-made translucent rice paper | Shoji screens, pendant lights, wall panels |
+| River stones / pebble aggregate | Smooth water-worn stones | Zen garden integration, bathroom floors |
+| Tamo ash | Furniture-grade hardwood with subtle grain | Furniture |
+| Kiri (paulownia) | Ultra-lightweight pale hardwood | Storage furniture, traditional tansu |
+| Unglazed terracotta / Bizen ware ceramics | Earthy naturally fired clay | Earthy accent objects |
+| Natural linen | Undyed plain-weave fiber | Bedding, cushion covers |
+| Dark-stained oak or walnut | Ebonized or deep-stained hardwood | Modern Japanese-inspired furniture |
+| Sand and gravel | Raked dry garden materials | Karesansui elements brought indoors |
+| Rice straw tatami | Traditional woven floor mat | Traditional flooring |
 
 ### Color Palette
 | Color Name | Hex Code | Usage Context |
@@ -106,133 +111,7 @@ Clutter of any kind, Western-scale furniture, bright colors, ceiling-mounted vis
 
 ---
 
-## 1B. Scandinavian Minimalism
-
-### Philosophy
-*Lagom* (just the right amount) — neither too much nor too little. Function is beauty. Design for the human body, the Nordic climate, and everyday life. Light-maximizing strategies are survival mechanisms, not aesthetics. *Hygge* warmth is woven into even the most restrained spaces.
-
-### Core Characteristics
-1. Light-maximizing palette — white/pale walls reflect limited Nordic daylight
-2. Functional furniture with no superfluous ornament
-3. Natural wood in pale tones (birch, pine, ash) dominate
-4. Hygge coziness elements — soft textiles, candles, warmth
-5. Open-plan layouts with clear circulation
-6. Storage integrated invisibly into architecture
-7. Plants as essential living elements (not decoration)
-8. Mix of high-quality craftsmanship with accessible mass production (IKEA ethos)
-9. Handmade ceramics and glass as accent objects
-10. Textural variation achieved through weaving and natural fibers
-11. Black as a grounding accent (not dominant)
-12. Layered rugs over wood or polished concrete floors
-
-### Materials
-- **Birch** — pale, fine grain; furniture, veneer panels, flooring
-- **Pine** — knot-visible boards; traditional Scandinavian flooring
-- **Whitewashed oak** — bleached finish for lighter tone
-- **Wool felt** — wall panels, acoustic tiles, pendant shades
-- **Merino wool** — throws, cushion covers
-- **Ceramic stoneware** — matte-glazed tableware, vases
-- **Smoked glass** — pendant fixtures, cabinet inserts
-- **Concrete** — worktops, shelving brackets
-- **Sheepskin (Gotland)** — chair throws, floor rugs
-- **Linen, natural undyed** — curtains, upholstery
-- **Powder-coated steel** — furniture legs, shelving systems
-- **Cork** — flooring and wall tiles (Finnish influence)
-- **Teak** — imported via Danish mid-century trade routes; sideboard, dining table tops
-- **Marble (Carrara white)** — Danish kitchen worktops, bathroom vanities
-- **Rattan** — Swedish and Danish chair seats and backs
-- **Smoked oak** — Norwegian flooring and cabinetry, darker tonal range
-- **Hand-woven wool (rya rug)** — Finnish floor covering, thick pile
-
-### Color Palette
-| Color Name | Hex Code | Usage Context |
-|---|---|---|
-| Arctic White | `#F7F5F2` | Walls, ceilings |
-| Birch Blonde | `#D4B896` | Wood floors, furniture |
-| Fjord Grey | `#9EAAB4` | Upholstery, textiles |
-| Slate Black | `#2C2C2C` | Accent frames, legs |
-| Cloudberry | `#F2A65A` | Warm accent textile |
-| Lichen Green | `#8FA882` | Plants, occasional textile |
-| Dusty Rose | `#C9967A` | Cushions, Nordic ceramic glaze |
-| Midnight Blue | `#2E3D5C` | Statement sofa, artwork |
-| Swedish Blue | `#5B7FA6` | Kitchen cabinetry, accent |
-| Norwegian Forest | `#3D5A40` | Textile accent, Norwegian rustic |
-| Finnish Birch | `#C8A96E` | Wood furniture, flooring |
-| Danish Clay | `#B57C5B` | Ceramic glaze, wall paint |
-| Nordic Snow | `#FAFAF8` | Dominant wall tone |
-| Graphite | `#404040` | Danish "Dark North" accent |
-| Pale Sage | `#A3B899` | Plant reference, textile |
-| Warm Oat | `#E8D9C0` | Upholstery base |
-
-### Signature Furniture
-- **Wegner Wishbone Chair (CH24)** — beechwood + paper cord weave, Carl Hansen & Son
-- **Finn Juhl Pelican Chair** — organic form, 1940 classic
-- **Arne Jacobsen Egg Chair** — fiberglass shell, swivel base
-- **String shelving system** — metal rod + birch veneer shelves, modular
-- **PH lamp series (Louis Poulsen)** — layered shade for glare-free light
-- **HAY Mags Soft sofa** — linen or bouclé, low-arm, modular
-
-### Lighting
-- PH5 pendant (Louis Poulsen) over dining — warm, layered, no glare
-- Abundance of candles (*stearinlys*) — critical to hygge
-- Daylight maximized through minimal window dressing
-- Floor lamps with parchment or linen shades
-- Under-cabinet warm strip lighting in kitchens
-- 2700K throughout for warmth
-
-### Textiles & Patterns
-- Chunky-knit wool throws (herringbone, cable-knit)
-- Linen curtains — unlined, billowing
-- Nordic folk patterns: dalahorse motifs, snowflake (*lusekofta*) knit
-- Striped cotton rugs (*trasmatta*)
-- Sheepskin over chair seats
-
-### Architectural Elements
-- Staved log construction (traditional Norwegian)
-- Painted timber cladding (*panel siding*) in white or grey
-- Large fixed-glazing windows with slim profiles
-- Double-height ceilings in Scandinavian farmhouses
-- White-plastered walls with exposed pine beams
-
-### Country-Specific Nuances
-- **Danish:** More sophisticated, urban, luxury materials, ceramic obsession, hygge-maximized
-- **Swedish:** Most restrained, IKEA democratized aesthetic, *lagom* purity, efficiency-first
-- **Norwegian:** Folk art patterns, natural ruggedness, landscape-referencing materials
-- **Finnish:** Most organic, flowing forms, Alvar Aalto-influenced, lake and forest references
-
-### Signature Danish Living Room (Hygge-Optimized)
-- Sofa: linen or bouclé, low-arm, modular (e.g., HAY Mags Soft)
-- Coffee table: solid oak with visible joinery
-- Shelving: String system with personal ceramics and books
-- Lighting: PH5 pendant + floor lamp + 8+ candles at dusk
-- Rug: large-format wool in natural or geometric pattern
-- Plant: Monstera deliciosa or fiddle-leaf fig in ceramic pot
-- Fireplace or candle alcove as focal point
-
-### Room Applications
-- **Living:** White walls, birch shelving, linen sofa, sheepskin, candles, one statement lamp
-- **Bedroom:** White duvet, low-profile bed, single plant, wooden alarm clock, linen curtains
-- **Kitchen:** Open shelving with ceramic display, integrated appliances, subway tile
-- **Bathroom:** White tile, teak bath mat, simple chrome fixtures, potted plant
-
-### 2024–2025 Trends
-- "Dark Scandi" — charcoal walls, matte black accents replacing all-white
-- Curved forms entering traditionally rectilinear Scandinavian space
-- Vintage 1960s Danish furniture revival in contemporary settings
-- Sustainable local sourcing emphasized
-
-### AI Rendering Keywords
-`scandinavian minimalist interior, hygge cozy living room, danish design furniture, birch wood nordic home, white walls linen curtains, sheepskin armchair, PH lamp pendant, open shelving ceramics, nordic candlelight, string shelving system, wishbone chair dining, dark scandi black accents, snowy exterior nordic cabin, lagom balanced space, nordic kitchen open shelves, danish hygge living room, swedish minimalist white interior, norwegian folk pattern textile, finnish sauna interior, smoked oak flooring scandinavian`
-
-### Complementary Styles
-Japandi, Rustic, Farmhouse, Contemporary
-
-### Avoid
-Maximalist decoration, dark oppressive colors, heavy ornament, synthetic materials, visible clutter, loud patterns
-
----
-
-## 1C. Warm Minimalism
+## B. Warm Minimalism
 
 ### Philosophy
 The evolution beyond cold minimalism — paring back clutter while layering texture, warmth, and material richness. Spaces feel curated and intentional, not spartan or clinical. The defining question shifts from "can I remove this?" to "does this add warmth and meaning?"
@@ -252,19 +131,22 @@ The evolution beyond cold minimalism — paring back clutter while layering text
 12. Scent as interior design element — diffusers, candles, firewood
 
 ### Materials
-- Limewash plaster (Bauwerk, Portola Paint) — textured walls with depth and age
-- Travertine (unfilled, warm beige) — counters, floors, feature walls
-- Aged oak — flooring, cabinetry, furniture
-- Unlacquered brass — fixtures, hardware, aging to natural patina
-- Bouclé fabric — textured loop-pile; sofas, armchairs
-- Shearling — seat pads, rugs, throws
-- Linen (raw, undyed) — curtains, cushions, upholstery
-- Raw silk — accent cushions, window treatments
-- Rosa Portugalia marble — warm pink-grey tones for statement surfaces
-- Calacatta Gold marble — warm veining for kitchen and bath
-- Hand-blown glass — pendants, decorative vessels
-- Undyed wool — area rugs, throws
-- Wax-polished concrete — floors, worktops
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Limewash plaster (Bauwerk, Portola Paint) | Textured walls with depth and age | Feature and field walls |
+| Travertine (unfilled, warm beige) | Natural stone with open voids | Counters, floors, feature walls |
+| Aged oak | Warm-toned hardwood with natural patina | Flooring, cabinetry, furniture |
+| Unlacquered brass | Raw brass that ages to natural patina | Fixtures, hardware |
+| Bouclé fabric | Textured loop-pile woven fabric | Sofas, armchairs |
+| Shearling | Natural sheepskin with wool intact | Seat pads, rugs, throws |
+| Linen (raw, undyed) | Natural unbleached plant fiber | Curtains, cushions, upholstery |
+| Raw silk | Unprocessed natural silk fiber | Accent cushions, window treatments |
+| Rosa Portugalia marble | Warm pink-grey veined stone | Statement surfaces |
+| Calacatta Gold marble | Warm gold-veined white marble | Kitchen and bath surfaces |
+| Hand-blown glass | Artisan glass with organic variation | Pendants, decorative vessels |
+| Undyed wool | Natural unprocessed wool fiber | Area rugs, throws |
+| Wax-polished concrete | Smooth sealed concrete surface | Floors, worktops |
 
 ### Color Palette
 | Color Name | Hex Code | Usage Context |

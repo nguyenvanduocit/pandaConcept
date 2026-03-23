@@ -29,18 +29,21 @@ Architecture as climate response and cultural identity. The American Southwest �
 ---
 
 ## Materials
-- **Adobe brick (sun-dried)** — structural; clay, straw, sand mix
-- **Rammed earth** — compressed earth walls, modern interpretation
-- **Saltillo (unglazed terracotta tile)** — flooring, patios
-- **Ponderosa pine (vigas)** — ceiling beams
-- **Mesquite wood** — flooring, carved furniture
-- **Wrought iron (blacksmithed)** — light fixtures, railings, furniture legs
-- **Punched tin** — light lanterns, mirror frames, cabinet inserts
-- **Cantera stone (Mexican volcanic)** — fireplace surrounds, fountains
-- **Hammered copper** — sinks, pots, accent fixtures
-- **Navajo wool (hand-woven)** — rugs, blankets, wall hangings
-- **Turquoise (raw or mosaic)** — inlay, jewelry-scale accents
-- **Cottonwood root (carved kachina)** — decorative sculptural objects
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Adobe brick (sun-dried) | Clay, straw, and sand mix | Structural walls |
+| Rammed earth | Compressed earth, modern interpretation | Walls, feature panels |
+| Saltillo (unglazed terracotta tile) | Large-format Mexican terracotta | Flooring, patios |
+| Ponderosa pine (vigas) | Peeled log ceiling beams | Ceiling beams |
+| Mesquite wood | Hard, dense desert hardwood | Flooring, carved furniture |
+| Wrought iron (blacksmithed) | Hand-forged iron | Light fixtures, railings, furniture legs |
+| Punched tin | Hand-punched sheet metal | Light lanterns, mirror frames, cabinet inserts |
+| Cantera stone (Mexican volcanic) | Soft porous volcanic stone | Fireplace surrounds, fountains |
+| Hammered copper | Hand-worked copper sheet | Sinks, pots, accent fixtures |
+| Navajo wool (hand-woven) | Hand-spun and woven wool | Rugs, blankets, wall hangings |
+| Turquoise (raw or mosaic) | Precious semi-precious stone | Inlay, jewelry-scale accents |
+| Cottonwood root (carved kachina) | Soft carved root wood | Decorative sculptural objects |
 
 ---
 

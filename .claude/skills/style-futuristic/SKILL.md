@@ -29,18 +29,21 @@ Design that anticipates what we have not yet built. Sci-Fi interiors draw from s
 ---
 
 ## Materials
-- **Polished white or grey concrete** — floor, ceiling, walls (seamless)
-- **Matte carbon fiber** — furniture panels, door faces
-- **Anodized aluminum** — frames, furniture, fixture trim
-- **Backlit onyx stone** — feature wall panels (light-transmitting)
-- **OLED glass panels** — wall screens that turn transparent/opaque
-- **Acrylic/polycarbonate (frosted or clear)** — furniture, partitions, stairs
-- **Mirror-polished stainless steel** — surfaces, sculptures
-- **Recycled/reclaimed composite** — sustainable futurism application
-- **Smart glass (electrochromic)** — windows that adjust opacity automatically
-- **3D-printed resin or concrete** — custom organic furniture forms
-- **Fluxboard (fiberglass)** — wall panels, ceiling
-- **Recycled aluminum foam** — insulation panels with visible cell pattern
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Polished white or grey concrete | Seamless poured and finished slab | Floor, ceiling, walls |
+| Matte carbon fiber | Woven composite panel | Furniture panels, door faces |
+| Anodized aluminum | Hard-coated metal in grey or black | Frames, furniture, fixture trim |
+| Backlit onyx stone | Light-transmitting natural stone | Feature wall panels |
+| OLED glass panels | Switchable digital display glass | Wall screens that turn transparent or opaque |
+| Acrylic/polycarbonate (frosted or clear) | Transparent or translucent polymer | Furniture, partitions, stairs |
+| Mirror-polished stainless steel | High-reflectance metal surface | Surfaces, sculptures |
+| Recycled/reclaimed composite | Sustainable engineered material | Sustainable futurism application throughout |
+| Smart glass (electrochromic) | Electrically-controlled opacity glass | Windows that adjust opacity automatically |
+| 3D-printed resin or concrete | Additive-manufactured custom forms | Custom organic furniture forms |
+| Fluxboard (fiberglass) | Rigid glass-fiber sheet | Wall panels, ceiling |
+| Recycled aluminum foam | Cellular metal with visible pore pattern | Insulation panels |
 
 ---
 

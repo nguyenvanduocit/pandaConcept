@@ -29,16 +29,19 @@ Celebrate the sun, the sea, and the whitewashed clarity of Cycladic tradition. G
 ---
 
 ## Materials
-- **Hymettian marble** — pale grey-white veined; traditional Attica stone
-- **Pentelic white marble** — bright white; classical building stone
-- **Naxian emery stone** — dark volcanic; flooring and feature surfaces
-- **Local limestone** — structural walls, floor paving, rough-cut steps
-- **Whitewashed plaster** — smooth lime over stone, repeated annually
-- **Wrought iron** — hand-forged window grilles, furniture legs, candleholders
-- **Hand-thrown terracotta** — pots, storage vessels, floor tiles
-- **Aegean blue glazed tiles** — kitchen and bath splashbacks
-- **Driftwood** — natural sculptural objects, picture frames
-- **Sailcloth and undyed linen** — curtains, seat cushions
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Hymettian marble | Pale grey-white veined | Traditional Attica stone surfaces |
+| Pentelic white marble | Bright white | Classical building stone, flooring, sculpture |
+| Naxian emery stone | Dark volcanic | Flooring and feature surfaces |
+| Local limestone | Rough-cut natural stone | Structural walls, floor paving, rough-cut steps |
+| Whitewashed plaster | Smooth lime over stone, repeated annually | All wall and ceiling surfaces |
+| Wrought iron | Hand-forged | Window grilles, furniture legs, candleholders |
+| Hand-thrown terracotta | Locally crafted, unglazed | Pots, storage vessels, floor tiles |
+| Aegean blue glazed tiles | Deep blue ceramic glaze | Kitchen and bath splashbacks |
+| Driftwood | Natural, weathered | Sculptural objects, picture frames |
+| Sailcloth and undyed linen | Crisp, natural, sun-faded | Curtains, seat cushions |
 
 ---
 

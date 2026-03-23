@@ -29,18 +29,21 @@ description: "Brutalist Interior Design interior design style — detailed refer
 ---
 
 ## Materials
-- **Board-formed concrete** — walls, floors, ceilings, furniture (table bases)
-- **Poured concrete (polished)** — floors, bathroom surfaces
-- **Corten steel (weathering steel)** — accents, furniture, screens
-- **Rough-cut black granite** — counters, feature elements
-- **Exposed concrete block (CMU)** — internal walls
-- **Matte black steel rebar** — decorative sculpture, furniture frames
-- **Dark-stained oak** — flooring contrast (primary warming element)
-- **Unfinished plywood (Baltic birch)** — storage, shelving
-- **Black rubber flooring** — industrial, matte, tactile
-- **Velvet (dark toned)** — softening upholstery on heavy frames
-- **Polished zinc** — countertops, table surfaces
-- **Poured resin (black or charcoal)** — bespoke table tops, sinks
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Board-formed concrete | In-situ pour with visible board texture | Walls, floors, ceilings, furniture table bases |
+| Poured concrete (polished) | Mechanically finished smooth slab | Floors, bathroom surfaces |
+| Corten steel (weathering steel) | Self-rusting orange-brown patina | Accents, furniture, screens |
+| Rough-cut black granite | Unpolished dark stone | Counters, feature elements |
+| Exposed concrete block (CMU) | Standard masonry unit, unplastered | Internal walls |
+| Matte black steel rebar | Industrial reinforcement bar | Decorative sculpture, furniture frames |
+| Dark-stained oak | Ebonized or deep-stained hardwood | Flooring contrast, primary warming element |
+| Unfinished plywood (Baltic birch) | Raw void-free plywood | Storage, shelving |
+| Black rubber flooring | Industrial vulcanized rubber | Floors — matte, tactile |
+| Velvet (dark toned) | Deep-pile woven fabric | Softening upholstery on heavy frames |
+| Polished zinc | Mirror-finished zinc sheet | Countertops, table surfaces |
+| Poured resin (black or charcoal) | Cast polymer in dark tone | Bespoke table tops, sinks |
 
 ---
 

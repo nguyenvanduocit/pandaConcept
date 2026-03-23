@@ -39,18 +39,21 @@ Clean, bright; shiplap + open shelving; matte black hardware; updated with sage 
 ---
 
 ## Materials
-- **White oak (wire-brushed)** — flooring, cabinetry
-- **Reclaimed pine / hemlock** — shiplap, furniture, ceiling planks
-- **Fireclay (apron sink)** — kitchen sink material
-- **Soapstone** — countertops (traditional farmhouse)
-- **Quartz (white with grey veining)** — modern farmhouse countertop
-- **Galvanized steel** — light pendants, hardware, shelving brackets
-- **Cast iron** — cookware, clawfoot tub, hooks, doorstops
-- **Cotton (grain sack print)** — cushions, chair seats, market bags
-- **Wool plaid** — throw blankets, accent textile
-- **Milk-painted wood** — furniture, cabinetry in chalk-white or cream
-- **Brick (whitewashed)** — kitchen backsplash, feature wall
-- **Limestone or concrete tile** — floor (modern farmhouse)
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| White oak (wire-brushed) | Pale hardwood with brushed texture | Flooring, cabinetry |
+| Reclaimed pine / hemlock | Salvaged softwood with visible character | Shiplap, furniture, ceiling planks |
+| Fireclay (apron sink) | Durable vitrified clay | Kitchen sink |
+| Soapstone | Soft matte natural stone | Countertops (traditional farmhouse) |
+| Quartz (white with grey veining) | Engineered stone surface | Modern farmhouse countertop |
+| Galvanized steel | Zinc-coated industrial metal | Light pendants, hardware, shelving brackets |
+| Cast iron | Heavy-duty molded iron | Cookware, clawfoot tub, hooks, doorstops |
+| Cotton (grain sack print) | Woven cotton with indigo stencil tradition | Cushions, chair seats, market bags |
+| Wool plaid | Woven wool in check pattern | Throw blankets, accent textile |
+| Milk-painted wood | Chalk-white or cream painted finish | Furniture, cabinetry |
+| Brick (whitewashed) | Painted or limewashed clay brick | Kitchen backsplash, feature wall |
+| Limestone or concrete tile | Natural or cast stone | Floor (modern farmhouse) |
 
 ---
 

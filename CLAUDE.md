@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-pandaConcept is a Python project that provides AI-powered interior design workflows. It generates optimized image prompts, renders designs via multiple AI providers, and offers design consultation — covering 30+ interior design styles worldwide.
+pandaConcept is a Python project that provides AI-powered interior design workflows. It generates optimized image prompts, renders designs via multiple AI providers, and offers design consultation — covering 42 interior design styles worldwide.
 
 ## Tech Stack
 
@@ -39,12 +39,12 @@ Use a `.env` file locally (gitignored). Reference `.env.example` for required ke
 
 ## Design Styles Coverage
 
-Comprehensive coverage across categories:
-- **Modern**: Modern, Minimalist, Scandinavian, Contemporary, Japandi, Mid-Century Modern
-- **Classic**: Neoclassical, Victorian, Art Deco, French Provincial, Baroque, Colonial
-- **Asian**: Japanese (Wabi-Sabi), Chinese, Vietnamese, Indochine, Korean, Thai
-- **Regional**: Mediterranean, Tropical, Bohemian, Rustic, Farmhouse, Coastal
-- **Specialty**: Industrial, Brutalist, Biophilic, Maximalist, Retro, Futuristic
+42 styles across 5 categories:
+- **Modern & Contemporary** (6): Minimalist, Scandinavian, Mid-Century Modern, Japandi, Contemporary, Bauhaus
+- **Classic & Traditional** (10): Baroque, Colonial, Victorian, Neoclassical, Art Deco, French Provincial, Regency, Georgian, Rococo, Tudor
+- **Asian & Eastern** (10): Japanese, Chinese, Vietnamese, Indochine, Korean, Thai, Balinese, Moroccan, Indian, Persian
+- **Regional & Vernacular** (8): Mediterranean (Greek, Italian, Spanish), Tropical, Coastal, Rustic, Farmhouse, Desert/Southwestern
+- **Specialty & Avant-Garde** (8): Industrial, Brutalist, Biophilic, Maximalist, Retro/Vintage, Futuristic, Bohemian, Wabi-Kintsugi
 
 ## Project Structure
 
@@ -121,7 +121,7 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
 
 ### Reference Skill
 
-- **`/style-guide`** — Tra cứu 30+ design styles (keywords, materials, colors, characteristics). Được dùng bởi các skill khác khi cần vocabulary chính xác cho từng style.
+- **`/style-guide`** — Tra cứu 42 design styles (keywords, materials, colors, characteristics). Được dùng bởi các skill khác khi cần vocabulary chính xác cho từng style.
 
 ### Skill Connection Map
 

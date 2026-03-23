@@ -6,28 +6,48 @@
 
 | Style | Primary Keywords | Mood Keywords | Light Keywords |
 |---|---|---|---|
-| Japanese Minimalism | tatami, shoji, tokonoma, ma, zabuton | serene, zen, contemplative | diffused, soft, directional |
-| Scandinavian | birch, hygge, PH lamp, lagom | cozy, functional, light | maximized natural, candlelight |
-| Warm Minimalism | limewash, travertine, bouclé, brass | warm, curated, restrained | ambient, warm-toned |
-| Japandi | shou sugi ban, washi, linen, live-edge oak | harmonious, natural, minimal | washi filtered, cove |
-| Contemporary | bouclé, travertine, arched, fluted | current, warm, organic | sculptural, layered |
+| Art Deco | macassar ebony, chevron, sunburst, chrome, lacquer | glamorous, aspirational, bold | torchère uplighting, smoked mirror |
+| Balinese | paras stone, teak, alang-alang thatch, frangipani | spiritual, lush, open | candles, water reflection, natural |
+| Baroque | gilded moldings, crystal chandelier, velvet, fresco | theatrical, opulent, powerful | chiaroscuro, warm amber flicker |
 | Bauhaus | tubular steel, primary color, geometric | functional, rational, bold | industrial track, glass |
+| Biophilic | living wall, skylight, natural stone, moss | restorative, connected, calm | full-spectrum, circadian |
+| Bohemian | rattan, macramé, kilim, layered | free-spirited, global, warm | candlelight, lantern |
+| Brutalist | raw concrete, geometric, cantilevered | austere, monumental, bold | light shafts, dramatic |
+| Chinese Traditional | huanghuali rosewood, red lacquer, moon gate, caisson ceiling | formal, scholarly, symbolic | silk lantern, courtyard shaft |
+| Coastal/Hamptons | shiplap, linen, navy, sisal | relaxed luxury, breezy | washed, ocean-bright |
+| Colonial | wide plank pine, rattan, adobe, talavera tile | adaptive, accumulated, warm | candlelight, amber intimate |
+| Contemporary | bouclé, travertine, arched, fluted | current, warm, organic | sculptural, layered |
+| Desert/Southwestern | adobe, vigas, saltillo, kiva, turquoise | earthy, cultural, warm | desert sun, candlelight |
+| Farmhouse | shiplap, apron sink, barn door, sage | homey, practical, warm | natural, industrial pendant |
+| French Provincial | carved walnut armoire, toile de jouy, terracotta tomette, linen | comfortable elegance, lived-in | candlelight, gentle ambient |
+| Futuristic/Sci-Fi | parametric, LED, smart glass, polished | innovative, clean, intelligent | LED architectural |
+| Georgian | mahogany, palladian window, plasterwork, dado rail | ordered, refined, rational | candlelight, warm chandelier |
+| Indian | jali screen, pietra dura, banarasi silk, brass diyas | vibrant, sacred, layered | jali shadow patterns, brass lantern |
+| Indochine | louvered shutters, peacock rattan chair, encaustic tile, teak | nostalgic hybrid, tropical elegant | louver-filtered, ceiling fan ambient |
+| Industrial | exposed brick, concrete, matte black | raw, urban, honest | Edison filament, industrial |
+| Japanese Minimalism | tatami, shoji, tokonoma, ma, zabuton | serene, zen, contemplative | diffused, soft, directional |
+| Japandi | shou sugi ban, washi, linen, live-edge oak | harmonious, natural, minimal | washi filtered, cove |
+| Korean Hanok | ondol floor, hanji paper, Korean red pine, madang courtyard | restrained, warm, contemplative | hanji diffused, moonlight quality |
+| Maximalist | jewel tones, velvet, pattern mix, gallery | bold, personal, joyful | sculptural chandelier |
 | Mediterranean (Greek) | cycladic white, aegean blue, mosaic | sun-kissed, timeless, warm | strong directional, shadowed |
 | Mediterranean (Italian) | Murano, travertine, fresco, brocade | opulent, historic, warm | dramatic chandelier |
 | Mediterranean (Spanish) | azulejo, moorish arch, terracotta | vibrant, cultural, textured | dappled courtyard |
-| Tropical | rattan, bamboo, botanical print, teak | lush, relaxed, open | filtered jungle, open sky |
-| Coastal/Hamptons | shiplap, linen, navy, sisal | relaxed luxury, breezy | washed, ocean-bright |
-| Rustic | log beam, stone fireplace, cowhide | rugged, warm, authentic | amber firelight |
-| Farmhouse | shiplap, apron sink, barn door, sage | homey, practical, warm | natural, industrial pendant |
-| Desert/Southwestern | adobe, vigas, saltillo, kiva, turquoise | earthy, cultural, warm | desert sun, candlelight |
-| Industrial | exposed brick, concrete, matte black | raw, urban, honest | Edison filament, industrial |
-| Brutalist | raw concrete, geometric, cantilevered | austere, monumental, bold | light shafts, dramatic |
-| Biophilic | living wall, skylight, natural stone, moss | restorative, connected, calm | full-spectrum, circadian |
-| Maximalist | jewel tones, velvet, pattern mix, gallery | bold, personal, joyful | sculptural chandelier |
+| Mid-Century Modern | teak sideboard, eames lounge, sputnik chandelier, terrazzo | optimistic, functional, playful | arc floor lamp, warm incandescent |
+| Moroccan | zellige tile, tadelakt, beni ourain rug, fanous lantern | exotic, layered, sensory | star shadow projection, candles |
+| Neoclassical | fluted pilasters, white marble, wedgwood blue, plaster medallion | rational, elegant, restrained | crystal chandelier, argand lamp |
+| Persian | persian carpet medallion, aineh-kari mirror, muqarnas, turquoise tile | poetic, sacred, opulent | prismatic colored glass, mirror shimmer |
+| Regency | rosewood brass inlay, sabre leg, striped silk, crystal chandelier | witty, sophisticated, glamorous | crystal sparkle, convex mirror |
 | Retro/Vintage | era-specific objects, pattern, decade color | nostalgic, playful, expressive | warm, lamp-lit |
-| Futuristic/Sci-Fi | parametric, LED, smart glass, polished | innovative, clean, intelligent | LED architectural |
-| Bohemian | rattan, macramé, kilim, layered | free-spirited, global, warm | candlelight, lantern |
+| Rococo | boiserie carved paneling, shell motif, pastel silk, sèvres porcelain | playful, intimate, delicate | soft shimmer, gilt reflection |
+| Rustic | log beam, stone fireplace, cowhide | rugged, warm, authentic | amber firelight |
+| Scandinavian | birch, hygge, PH lamp, lagom | cozy, functional, light | maximized natural, candlelight |
+| Thai | teak gilded carving, thai silk, lai rod nam lacquer, spirit house | sacred, ornate, tropical luxury | gold accent, indirect cove |
+| Tropical | rattan, bamboo, botanical print, teak | lush, relaxed, open | filtered jungle, open sky |
+| Tudor | exposed oak beams, inglenook fireplace, linenfold paneling, tapestry | intimate, historic, cave-like | amber firelight, candlelight |
+| Victorian | button-tufted chesterfield, william morris pattern, encaustic tile | layered, narrative, opulent | warm amber, multi-source |
+| Vietnamese | sơn mài lacquer, jackfruit wood, ancestor altar, hội an lantern | ceremonial, layered, spiritual | silk lantern, courtyard light |
 | Wabi-Kintsugi | kintsugi, weathered, imperfect, patina | contemplative, accepting, quiet | natural variable, single point |
+| Warm Minimalism | limewash, travertine, bouclé, brass | warm, curated, restrained | ambient, warm-toned |
 
 ---
 
@@ -266,5 +286,5 @@ wide-angle, --no synthetic materials, dead plants, artificial flowers
 ---
 
 *Condensed from: 2026-03-23 Research Report*
-*Styles: 20 primary (with 30+ sub-variations)*
+*Styles: 42 primary styles (with 50+ sub-variations)*
 *Purpose: pandaConcept AI interior design image generation*

@@ -39,18 +39,21 @@ Pattern mixing; vintage + new; bold color; joyful excess. "Dopamine design" — 
 ---
 
 ## Materials
-- **Velvet** — 2025's signature maximalist texture; sofas, chairs, cushions, wall panels
-- **Marble (heavily veined)** — Calacatta, Nero Marquina, Arabescato
-- **Aged brass and gold** — hardware, frames, fixtures, objects
-- **Lacquered surfaces (high-gloss)** — furniture, walls, ceilings
-- **Silk and brocade** — cushions, window treatments, accent chairs
-- **Hand-knotted wool rugs** — Persian, Moroccan, Turkish
-- **Colorful encaustic tile** — kitchen and bath floors, feature walls
-- **Rattan and cane** — furniture for lightness contrast against heavy textiles
-- **Botanical pattern wallpaper** — de Gournay, Farrow & Ball, Cole & Son
-- **Oxidized bronze** — sculpture, candleholders, drawer pulls
-- **Hand-blown colored glass** — Murano pendants, decorative vessels
-- **Tiger or leopard print** — animal print on upholstery, rugs (classic maximalist "neutral")
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Velvet | Deep-pile woven fabric; 2025's signature texture | Sofas, chairs, cushions, wall panels |
+| Marble (heavily veined) | Calacatta, Nero Marquina, Arabescato | Statement surfaces throughout |
+| Aged brass and gold | Warm patinated metal | Hardware, frames, fixtures, objects |
+| Lacquered surfaces (high-gloss) | High-sheen sprayed finish | Furniture, walls, ceilings |
+| Silk and brocade | Woven luxurious textiles | Cushions, window treatments, accent chairs |
+| Hand-knotted wool rugs | Persian, Moroccan, Turkish traditions | Floor layering |
+| Colorful encaustic tile | Hand-poured patterned cement | Kitchen and bath floors, feature walls |
+| Rattan and cane | Open-weave natural material | Furniture providing lightness against heavy textiles |
+| Botanical pattern wallpaper | de Gournay, Farrow & Ball, Cole & Son | Walls and ceilings |
+| Oxidized bronze | Dark-patinated cast metal | Sculpture, candleholders, drawer pulls |
+| Hand-blown colored glass | Murano and artisan glass | Pendants, decorative vessels |
+| Tiger or leopard print | Animal print fabric or hide | Upholstery, rugs — classic maximalist "neutral" |
 
 ---
 

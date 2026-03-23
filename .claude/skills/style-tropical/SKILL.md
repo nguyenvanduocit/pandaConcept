@@ -42,18 +42,21 @@ Polynesian natural materials, surf culture, indoor-outdoor lanai living, volcani
 ---
 
 ## Materials
-- **Teak (reclaimed or plantation)** — flooring, furniture, structural decking
-- **Bamboo** — flooring, walls, ceiling, furniture, screens
-- **Rattan (core and peel)** — furniture frames and woven surfaces
-- **Abaca / Manila hemp** — rugs, wall coverings
-- **Volcanic basalt** — Hawaiian construction; stone walls, pool surrounds
-- **Coral stone (oolitic limestone)** — Caribbean construction; walls, steps
-- **Coconut shell** — tile inlay, tabletops
-- **Water hyacinth** — woven furniture, baskets
-- **Alang-alang thatch** — roof and ceiling material
-- **Tapa bark cloth** — Polynesian wall hangings, textiles
-- **Terrazzo with tropical aggregate** — floors
-- **Hardwood (merbau, jati, ipil)** — decking, furniture
+
+| Material | Specifics | Application |
+|----------|-----------|-------------|
+| Teak (reclaimed or plantation) | Dense, moisture-resistant hardwood | Flooring, furniture, structural decking |
+| Bamboo | Fast-growing grass, dimensionally stable | Flooring, walls, ceiling, furniture, screens |
+| Rattan (core and peel) | Flexible woven natural cane | Furniture frames and woven surfaces |
+| Abaca / Manila hemp | Strong natural plant fiber | Rugs, wall coverings |
+| Volcanic basalt | Hawaiian dark volcanic stone | Stone walls, pool surrounds |
+| Coral stone (oolitic limestone) | Caribbean porous stone | Walls, steps |
+| Coconut shell | Hard polished shell | Tile inlay, tabletops |
+| Water hyacinth | Woven aquatic plant fiber | Woven furniture, baskets |
+| Alang-alang thatch | Sweet grass roofing material | Roof and ceiling material |
+| Tapa bark cloth | Polynesian beaten bark textile | Wall hangings, textiles |
+| Terrazzo with tropical aggregate | Stone composite flooring | Floors |
+| Hardwood (merbau, jati, ipil) | Dense tropical hardwoods | Decking, furniture |
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 name: style-guide
-description: Reference guide for 50+ interior design styles — use when you need style characteristics, keywords, color palettes (hex codes), materials, furniture types, or AI rendering keywords for any design style
+description: Reference guide for 42 interior design styles — use when you need style characteristics, keywords, color palettes (hex codes), materials, furniture types, or AI rendering keywords for any design style
 ---
 
 # Interior Design Style Guide
 
-Comprehensive reference for **44 design styles + 70+ sub-variations**, optimized for AI image generation. Each style includes hex color codes, specific materials (with wood species), signature furniture, and 15+ AI rendering keywords.
+Comprehensive reference for **42 design styles with regional/era sub-variations**, optimized for AI image generation. Each style includes hex color codes, specific materials (with wood species), signature furniture, and 15+ AI rendering keywords.
 
 ## Individual Style Skills
 
