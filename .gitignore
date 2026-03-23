@@ -5,8 +5,7 @@ __pycache__/
 dist/
 *.egg-info/
 output/
-projects/*/renders/
-projects/*/references/
+projects/
 .omc/
 !.claude/
 CLAUDE.local.md
