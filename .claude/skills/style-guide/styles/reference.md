@@ -133,11 +133,6 @@ wide-angle, --no synthetic materials, dead plants, artificial flowers
 - Include emotional/atmospheric language ("creates feeling of sheltered warmth")
 - Reference specific designer or brand references for style precision
 
-### Flux
-- Detailed material and color specifications most effective
-- Include specific object placement ("centered on left wall, beside window")
-- Architectural drawings reference for complex spaces
-
 ---
 
 ## Style Compatibility Matrix

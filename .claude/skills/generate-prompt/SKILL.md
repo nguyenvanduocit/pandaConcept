@@ -35,7 +35,7 @@ HAS_CONTROL_MAPS=true?
     - Prompt must emphasize materials, colors, furniture OVER room geometry (the depth map handles geometry)
     - Do NOT describe wall positions, window placement, ceiling height — the control map provides this
     - For Stability AI: prompt focuses on style + materials (structure API handles layout)
-    - For Flux depth-pro: prompt focuses on style + atmosphere (depth map handles layout)
+    - For Gemini editing: pass depth map as reference image alongside the style prompt
 
 HAS_MASKS=true?
 └── INPAINTING MODE:
@@ -54,7 +54,7 @@ Neither (text-to-image)?
 Gather from the user (ask if not provided via `$ARGUMENTS`):
 1. **Room type**: living room, bedroom, kitchen, bathroom, office, dining room, etc.
 2. **Design style**: reference `/style-guide` for available styles
-3. **Target provider**: Gemini, OpenAI/DALL-E, Grok, Stability AI, Midjourney, Flux, or "all"
+3. **Target provider**: Gemini, OpenAI/DALL-E, Grok, Stability AI, Midjourney, or "all"
 4. **Additional details** (optional): room dimensions, specific furniture, color preferences, lighting mood, camera angle
 
 ## Prompt Structure Per Provider
@@ -102,11 +102,6 @@ Include: [specific furniture], [materials like marble/wood/fabric], [color palet
 Mood: [warm/cool/dramatic/serene]. Lighting: [natural/artificial/mixed].
 ```
 
-### Flux
-```
-A stunning [room type] interior in [style] style. [Materials] surfaces, [furniture descriptions], [color palette]. [Lighting description]. Shot with a wide-angle lens, professional interior photography, ultra-detailed, 8K resolution.
-```
-
 ## Output Format
 
 Present the generated prompts in a clear format:
@@ -128,5 +123,5 @@ Present the generated prompts in a clear format:
 
 - **Provider prompt lengths differ wildly**: DALL-E 3 = under 400 chars. Midjourney = flowing description. Stability = comma-separated keywords. Don't use one format for all providers.
 - **Negative prompts are not universal**: Only Stability AI uses explicit negative prompts. Don't add negative prompt sections for DALL-E or Gemini — they ignore or misinterpret them.
-- **"All providers" is expensive**: Generating for all 6 providers means 6 API calls. Ask the user if they really want all, or suggest 2-3 best providers for their style.
+- **"All providers" is expensive**: Generating for all providers means multiple API calls. Ask the user if they really want all, or suggest 2-3 best providers for their style.
 - **Style keywords order matters**: Put the most important style descriptors first. AI models weight earlier tokens more heavily. Room type and style should lead, decorative details follow.

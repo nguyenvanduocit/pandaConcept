@@ -45,14 +45,14 @@ HAS_MASKS=true?
 
 HAS_DEPTH=true?
 └── STRUCTURE CONTROL MODE (depth/control map + prompt → structure API)
-    Providers: Stability AI /control/structure, Flux depth-pro
+    Providers: Stability AI /control/structure, Gemini (image editing with depth reference)
 
 HAS_REFERENCE=true AND HAS_DEPTH=false?
 └── STOP. Run /preprocess-room FIRST. Do NOT render without control maps when a reference photo exists.
 
 None of the above?
 └── TEXT-TO-IMAGE MODE (prompt only)
-    Providers: Any (OpenAI, Gemini, Stability, Grok, Flux)
+    Providers: Any (OpenAI, Gemini, Stability, Grok)
 ```
 
 **If control maps exist, USE THEM.** Never fall back to text-to-image when structure data is available.
@@ -61,8 +61,8 @@ If `HAS_SEMANTIC=true`, read `semantic_analysis.json` to cross-check that the pr
 
 **Provider routing by mode:**
 - **Inpainting**: Stability AI (`/edit/inpaint`) or OpenAI (DALL-E edit) — ONLY these support masks
-- **Structure control**: Stability AI (`/control/structure`) or Flux depth-pro (Replicate) — best layout fidelity
-- **Text-to-image**: Any provider (OpenAI, Gemini, Stability, Grok, Flux)
+- **Structure control**: Stability AI (`/control/structure`) or Gemini (image editing with depth reference) — best layout fidelity
+- **Text-to-image**: Any provider (OpenAI, Gemini, Stability, Grok)
 
 ## Workflow
 
@@ -164,24 +164,6 @@ def render_with_structure(prompt, reference_image_path, api_key, control_strengt
     raise Exception(f"Stability API error: {response.status_code} {response.text}")
 ```
 
-**Flux Depth-Pro via Replicate** (high quality depth control):
-```python
-import replicate
-
-def render_with_depth_flux(prompt, depth_map_path, control_strength=0.85):
-    """Render with depth-controlled Flux via Replicate."""
-    output = replicate.run(
-        "black-forest-labs/flux-depth-pro",
-        input={
-            "prompt": prompt,
-            "control_image": open(depth_map_path, "rb"),
-            "control_strength": control_strength,
-            "num_outputs": 1
-        }
-    )
-    return output[0]  # URL to generated image
-```
-
 **Stability AI Inpainting** (for masked edits from `/mask-room`):
 ```python
 def render_inpaint(prompt, image_path, mask_path, api_key):
@@ -197,41 +179,6 @@ def render_inpaint(prompt, image_path, mask_path, api_key):
     )
     return response.content
 ```
-
-**fal.ai Flux Inpainting** (recommended for mask-based edits — fast, high quality):
-```python
-import fal_client
-import base64, os, requests
-
-os.environ["FAL_KEY"] = "your-fal-key"  # format: {key_id}:{key_secret}
-
-def to_data_uri(path, mime="image/png"):
-    with open(path, "rb") as f:
-        return f"data:{mime};base64,{base64.b64encode(f.read()).decode()}"
-
-def render_inpaint_flux(prompt, image_path, mask_path, output_path):
-    """Inpaint via fal.ai Flux — supports mask-based editing."""
-    result = fal_client.subscribe(
-        "fal-ai/flux-general/inpainting",  # CORRECT endpoint (not flux/dev/inpainting)
-        arguments={
-            "prompt": prompt,
-            "image_url": to_data_uri(image_path, "image/jpeg"),
-            "mask_url": to_data_uri(mask_path, "image/png"),
-            "image_size": {"width": 960, "height": 1280},
-            "num_images": 1,
-            "strength": 0.95,  # higher = more change in masked area
-        },
-        with_logs=False,
-    )
-    img_url = result["images"][0]["url"]
-    img_data = requests.get(img_url).content
-    with open(output_path, "wb") as f:
-        f.write(img_data)
-    return output_path
-```
-> **IMPORTANT**: The correct fal.ai model path is `fal-ai/flux-general/inpainting`.
-> Do NOT use `fal-ai/flux/dev/inpainting` (404) or raw HTTP polling (use SDK instead).
-> Images must be passed as base64 data URIs. Install: `pip install fal-client`.
 
 ### Step 3: Output Management
 - Save generated images to `output/[style]/[provider]/[timestamp].png`
@@ -269,8 +216,7 @@ Present results:
 - **Don't render without a proper prompt**: Vague inputs like "make a nice living room" produce poor results. Redirect to /generate-prompt.
 - **API keys are per-provider**: Each provider needs its own env var. Check the specific one, don't just say "check your API keys".
 - **Gemini model**: Use `gemini-3.1-flash-image-preview` for image generation/editing. Use SDK `google-genai` (NOT deprecated `google.generativeai`).
-- **fal.ai inpainting**: Use `fal-ai/flux-general/inpainting` endpoint. Always use `fal_client` SDK, not raw HTTP. Use strong repetitive prompts for material/color changes (e.g., "solid bright gold metallic, 24 karat gold plated" not just "gold").
 - **Cost awareness**: DALL-E HD costs ~$0.08/image, Stability ~$0.03, Grok varies. Warn the user before "render all providers".
 - **Layout-controlled rendering requires preprocessing first**: Don't skip `/preprocess-room`. Without control maps, you're back to text-only generation which can't guarantee layout preservation.
-- **control_strength tuning**: Start at 0.7 for Stability structure, 0.85 for Flux depth. Higher = more layout fidelity but less style freedom. Lower = more creative but may distort room shape.
+- **control_strength tuning**: Start at 0.7 for Stability structure. Higher = more layout fidelity but less style freedom. Lower = more creative but may distort room shape.
 - **Inpainting needs both image AND mask**: The mask from `/mask-room` defines what changes. White pixels = edit zone, black = preserve.

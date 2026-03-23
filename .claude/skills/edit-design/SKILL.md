@@ -61,7 +61,7 @@ User wants minor adjustment (color, lighting)?
 Gather from the user (ask if not provided via `$ARGUMENTS`):
 1. **Reference image**: the image to edit (user must provide)
 2. **Desired changes**: what to modify — can be free-form (e.g., "make it Japandi", "swap the sofa for a sectional", "warmer lighting")
-3. **Target provider**: Gemini, OpenAI/DALL-E, Grok, Stability AI, Midjourney, Flux, or "all"
+3. **Target provider**: Gemini, OpenAI/DALL-E, Grok, Stability AI, Midjourney, or "all"
 4. **Preserve list** (optional): elements the user explicitly wants to keep unchanged
 
 ## Analysis Process
@@ -163,7 +163,6 @@ Follow the provider-specific prompt structures from `/generate-prompt`:
 - **Stability AI**: Positive + Negative prompt, keyword style
 - **Midjourney**: Flowing description + parameters
 - **Grok**: Structured with mood/lighting sections
-- **Flux**: Descriptive with lens/photography terms
 
 #### Inpainting / Edit Prompt (when supported)
 
