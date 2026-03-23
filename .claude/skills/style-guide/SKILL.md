@@ -1,73 +1,110 @@
 ---
 name: style-guide
-description: Reference guide for 30+ interior design styles — use when you need style characteristics, keywords, color palettes, materials, or furniture types for any design style
+description: Reference guide for 50+ interior design styles — use when you need style characteristics, keywords, color palettes (hex codes), materials, furniture types, or AI rendering keywords for any design style
 ---
 
 # Interior Design Style Guide
 
-When invoked, provide detailed information about the requested design style(s). If no specific style is requested, present an overview of all categories.
+Comprehensive reference for **44 design styles + 70+ sub-variations**, optimized for AI image generation. Each style includes hex color codes, specific materials (with wood species), signature furniture, and 15+ AI rendering keywords.
 
-## Style Categories
+## Individual Style Skills
+
+Each style is its own skill — invoke directly with `/style-<name>`:
 
 ### Modern & Contemporary
-- **Modern**: Clean lines, open spaces, neutral palette with bold accents. Materials: glass, steel, concrete. Keywords: sleek, functional, uncluttered.
-- **Minimalist**: "Less is more." Monochromatic, essential furniture only. Materials: natural wood, white surfaces. Keywords: sparse, intentional, breathing room.
-- **Scandinavian (Nordic)**: Light woods, white walls, hygge warmth. Materials: birch, pine, wool, linen. Colors: white, grey, soft pastels. Keywords: cozy, functional, light.
-- **Contemporary**: Current trends, fluid, eclectic mix. Rounded furniture, textured fabrics. Keywords: trending, curated, evolving.
-- **Japandi**: Japanese minimalism + Scandinavian warmth. Materials: light wood, ceramics, linen. Colors: earth tones, muted greens. Keywords: wabi-sabi, hygge, harmony.
-- **Mid-Century Modern**: 1950s-60s organic forms, tapered legs, bold colors. Materials: teak, walnut, molded plastic. Keywords: retro-modern, organic curves, iconic.
+`/style-minimalist` · `/style-scandinavian` · `/style-mid-century-modern` · `/style-japandi` · `/style-contemporary` · `/style-bauhaus`
 
 ### Classic & Traditional
-- **Neoclassical**: Greek/Roman symmetry, columns, moldings. Materials: marble, gilded accents. Colors: cream, gold, navy. Keywords: grandeur, symmetry, refined.
-- **Victorian**: Ornate, rich fabrics, dark woods. Materials: mahogany, velvet, brocade. Colors: deep burgundy, forest green, gold. Keywords: elaborate, layered, opulent.
-- **Art Deco**: 1920s geometric glamour, bold patterns. Materials: lacquer, chrome, exotic woods. Colors: black, gold, emerald, cobalt. Keywords: geometric, luxurious, dramatic.
-- **French Provincial**: Rustic elegance, curved furniture, toile patterns. Materials: distressed wood, linen, wrought iron. Colors: soft blue, lavender, cream. Keywords: romantic, pastoral, charming.
-- **Baroque**: Extravagant ornamentation, grandeur. Materials: gilt, marble, rich textiles. Colors: deep red, gold, royal blue. Keywords: theatrical, lavish, monumental.
-- **Colonial**: Historical European influence, symmetry. Materials: dark hardwood, brass, leather. Colors: earth tones, deep reds. Keywords: traditional, stately, handcrafted.
+`/style-baroque` · `/style-colonial` · `/style-victorian` · `/style-neoclassical` · `/style-art-deco` · `/style-french-provincial` · `/style-regency` · `/style-georgian` · `/style-rococo` · `/style-tudor`
 
 ### Asian & Eastern
-- **Japanese (Wabi-Sabi)**: Imperfection beauty, natural materials, tatami. Materials: bamboo, rice paper, natural stone. Colors: earth tones, moss green. Keywords: zen, asymmetry, nature.
-- **Chinese Traditional**: Red and gold, intricate carvings, feng shui. Materials: lacquered wood, silk, jade. Colors: red, gold, black. Keywords: auspicious, symbolic, harmony.
-- **Vietnamese**: Tropical elegance, French-colonial blend. Materials: bamboo, rattan, ceramic. Colors: earth tones, terracotta. Keywords: tropical, handcraft, heritage.
-- **Indochine**: French-Asian fusion, colonial tropical. Materials: dark wood, rattan, silk. Colors: emerald, amber, cream. Keywords: colonial-tropical, fusion, lush.
-- **Korean (Hanok-inspired)**: Clean lines, ondol warmth, natural harmony. Materials: hanji paper, pine, stone. Colors: white, natural wood, celadon. Keywords: humble, natural, balanced.
+`/style-japanese` · `/style-chinese` · `/style-vietnamese` · `/style-indochine` · `/style-korean` · `/style-thai` · `/style-balinese` · `/style-moroccan` · `/style-indian` · `/style-persian`
 
 ### Regional & Vernacular
-- **Mediterranean**: Sun-washed warmth, arches, terracotta. Materials: stucco, tile, wrought iron. Colors: blue, white, terracotta, olive. Keywords: coastal, warm, textured.
-- **Tropical**: Indoor-outdoor living, lush greenery. Materials: rattan, teak, palm, bamboo. Colors: green, turquoise, coral. Keywords: paradise, natural, breezy.
-- **Bohemian**: Eclectic, layered, globally collected. Materials: mixed textiles, macramé, vintage. Colors: jewel tones, warm earth. Keywords: free-spirited, layered, collected.
-- **Rustic**: Raw natural materials, cabin warmth. Materials: reclaimed wood, stone, leather. Colors: brown, amber, forest green. Keywords: rugged, warm, authentic.
-- **Farmhouse**: Country charm, shiplap, practical beauty. Materials: reclaimed wood, galvanized metal, linen. Colors: white, cream, sage. Keywords: homey, practical, nostalgic.
-- **Coastal**: Beach-inspired, airy, relaxed. Materials: driftwood, linen, rope, shell. Colors: blue, white, sandy beige. Keywords: breezy, relaxed, nautical.
+`/style-mediterranean-greek` · `/style-mediterranean-italian` · `/style-mediterranean-spanish` · `/style-tropical` · `/style-coastal` · `/style-rustic` · `/style-farmhouse` · `/style-desert-southwestern`
 
 ### Specialty & Avant-Garde
-- **Industrial**: Exposed structure, raw materials. Materials: exposed brick, steel, concrete. Colors: grey, black, rust. Keywords: urban, raw, utilitarian.
-- **Brutalist**: Bold concrete forms, monolithic. Materials: raw concrete, steel. Colors: grey, charcoal. Keywords: monumental, honest, imposing.
-- **Biophilic**: Nature integration, living walls, natural light. Materials: living plants, natural wood, stone, water. Colors: greens, earth tones. Keywords: nature-connected, wellness, organic.
-- **Maximalist**: More is more, bold patterns, collected. Materials: mixed luxe fabrics, art, objects. Colors: vibrant, clashing, saturated. Keywords: bold, eclectic, curated chaos.
-- **Retro (60s-70s)**: Nostalgic, bold colors, funky patterns. Materials: plastic, shag, chrome. Colors: orange, avocado, mustard. Keywords: groovy, nostalgic, playful.
-- **Futuristic**: Cutting-edge, tech-integrated, sleek. Materials: acrylic, LED, smart glass. Colors: white, silver, neon accents. Keywords: high-tech, streamlined, innovative.
+`/style-industrial` · `/style-brutalist` · `/style-biophilic` · `/style-maximalist` · `/style-retro-vintage` · `/style-futuristic` · `/style-bohemian` · `/style-wabi-kintsugi`
 
-## How to Use This Guide
+### Reference
+`styles/reference.md` — AI Prompt Formula, Provider Notes (Midjourney/DALL-E/SD/Gemini/Flux), Style Compatibility Matrix, Material Glossary, Room Material Tables, Color Hex Reference
 
-When generating prompts or consulting on design:
-1. Identify the target style from this guide
-2. Use the **Keywords** for prompt generation
-3. Reference **Materials** and **Colors** for specificity
-4. Combine styles when requested (e.g., "Japandi" = Japanese + Scandinavian)
-5. Adapt vocabulary per AI provider — some respond better to descriptive keywords, others to technical terms
+## Quick Style Lookup
 
-## Session Relevant Skills
+### Modern & Contemporary
+- **Minimalist** — Japanese (zen, ma, tatami) / Scandinavian (hygge, birch, lagom) / Warm (limewash, travertine, bouclé)
+- **Scandinavian** — Danish/Swedish/Norwegian/Finnish. Light woods, white, functional warmth
+- **Mid-Century Modern** — 1950s-60s organic forms, teak, walnut, Eames, Saarinen
+- **Japandi** — Japanese wabi-sabi + Scandi hygge. Shou sugi ban, washi, live-edge oak
+- **Contemporary (2024-25)** — Curved forms, bouclé, travertine, limewash, warm earth tones
+- **Bauhaus** — Tubular steel, primary colors, geometric purity, Wassily/Barcelona chairs
 
-- `/design-consult` — uses this guide during style recommendation (Step 2). When a user's preferences are vague, consult the style guide to narrow down options.
-- `/generate-prompt` — pulls keywords, materials, and colors directly from this guide. The style guide is the source of truth for prompt vocabulary.
-- `/mood-board` — references this guide for style-accurate textures, furniture, and atmospheric descriptions.
-- `/edit-design` — when shifting styles on an existing image, this guide provides the target style's vocabulary for accurate prompt generation.
-- `/refine` — when a render doesn't match the intended style, this guide helps diagnose which keywords are missing or incorrect.
+### Classic & Traditional
+- **Baroque** (1600-1750) — Gilded grandeur, trompe-l'œil, velvet, crystal chandeliers
+- **Colonial** — American (pine, hearth) / British (rattan, mahogany) / Spanish (terracotta, stucco)
+- **Victorian** — Early (Gothic Revival) / High (maximalist) / Late (Aesthetic/Eastlake)
+- **Neoclassical** (1750-1850) — Greek/Roman symmetry, fluted columns, Wedgwood blue
+- **Art Deco** (1920s-30s) — Geometric glamour, Macassar ebony, chrome, black+gold
+- **French Provincial** — Rustic elegance, toile, lavender, carved walnut armoire
+- **Regency** (1800-1830) — Sabre legs, brass inlay, rosewood, "Bridgerton" aesthetic
+- **Georgian** (1714-1830) — Palladian symmetry, Chippendale, mahogany
+- **Rococo** (1715-1775) — Pastel asymmetry, boiserie, shell motifs, gilded bergère
+- **Tudor** (1485-1603) — Exposed oak beams, inglenook fireplace, linenfold paneling
+
+### Asian & Eastern
+- **Japanese (Wabi-Sabi)** — Tatami, shoji, tokonoma, hinoki cypress
+- **Chinese Traditional** — Ming (huanghuali) / Qing (ornate lacquer, red+gold)
+- **Vietnamese** — Tropical bamboo+rattan, French-colonial blend
+- **Indochine** — French-Asian fusion, dark wood, rattan, silk
+- **Korean (Hanok)** — Ondol floors, hanji paper, pine, celadon
+- **Thai** — Teak, gilded carving, naga motifs, Thai silk
+- **Balinese** — Open-air bale pavilions, paras stone, alang-alang thatch
+- **Moroccan/Moorish** — Zellige tile, tadelakt, riad courtyard
+- **Indian** — Mughal (marble, jali screens) / Rajasthani (mirror work, vibrant color)
+- **Persian** — Persian carpets, muqarnas, turquoise+lapis, iwan courtyards
+
+### Regional & Vernacular
+- **Mediterranean** — Greek (white+blue) / Italian (terracotta, Murano) / Spanish (azulejo)
+- **Tropical** — SE Asian / Caribbean / Hawaiian. Rattan, bamboo, open-air
+- **Coastal/Hamptons** — Shiplap, navy+white, linen, sisal
+- **Rustic** — American lodge / European / Mountain. Log, stone, cowhide
+- **Farmhouse** — Traditional / Modern. Shiplap, apron sink, barn doors
+- **Desert/Southwestern** — Adobe, vigas, saltillo, kiva fireplace, turquoise
+
+### Specialty & Avant-Garde
+- **Industrial** — NYC Loft / Warehouse / Soft Industrial. Brick, concrete, matte black
+- **Brutalist** — Raw concrete, board-formed, geometric mass, Corten steel
+- **Biophilic** — Living walls, natural light, organic forms, wellness
+- **Maximalist** — Curated / Eclectic. Jewel tones, velvet, pattern mixing
+- **Retro** — 50s (pastel) / 60s (space-age) / 70s (earth, shag) / 80s (neon, Memphis)
+- **Futuristic** — Parametric, LED, smart glass, carbon fiber
+- **Bohemian** — Traditional / Modern / Chic. Macramé, kilim, rattan
+- **Wabi-Kintsugi** — Gold-repaired ceramics, weathered materials, imperfection beauty
+
+## How to Use
+
+1. **User asks about a style** → Invoke `/style-<name>` (e.g., `/style-japanese` for Japanese)
+2. **Generating prompts** → Use **AI Keywords** from the style skill + `styles/reference.md` for prompt formula
+3. **Color specifics** → Each style skill has 8+ hex codes in color tables
+4. **Material specifics** → Each style skill lists 10+ materials with species/types
+5. **Fusion request** → Invoke both style skills + check Compatibility Matrix in `styles/reference.md`
+6. **Provider optimization** → See Provider-Specific Notes in `styles/reference.md`
+
+## Connected Skills
+
+| Skill | Uses Style Guide For |
+|-------|---------------------|
+| `/design-consult` | Style recommendation, narrowing options |
+| `/generate-prompt` | AI Keywords, materials, hex colors — source of truth |
+| `/mood-board` | Textures, furniture, atmospheric descriptions |
+| `/edit-design` | Target style vocabulary when shifting styles |
+| `/refine` | Diagnosing missing/incorrect keywords |
+| `/compare-models` | Consistent prompts via Keyword Matrix |
 
 ## Gotchas
 
-- **Styles are not rigid categories**: Real interiors often blend 2-3 styles. When users ask for a style, check if they actually want a fusion (e.g., "modern but warm" is likely Japandi or Scandinavian, not strict Modern).
-- **Keywords are provider-sensitive**: "Wabi-sabi" works well for Midjourney but may confuse Stability AI. Adapt the keywords to the target provider's vocabulary.
-- **Color palettes are starting points**: The listed colors are canonical for each style, but real implementations vary. Don't rigidly enforce — let the design brief and mood board take priority.
-- **Missing styles**: If a user requests a style not in this guide (e.g., Steampunk, Cottagecore, Memphis), research it rather than approximating with the closest listed style. Be transparent about gaps.
+- **Sub-styles matter**: "Mediterranean" → specify Greek/Italian/Spanish. "Victorian" → Early/High/Late.
+- **Keywords are provider-sensitive**: See Provider-Specific Notes in `reference.md`.
+- **Cultural sensitivity**: Asian styles have sacred elements — check Cultural Notes before rendering.
+- **Styles blend**: "Modern but warm" = Japandi or Warm Minimalism, not strict Modern.
+- **Hex codes are starting points**: Let design brief take priority over canonical colors.
