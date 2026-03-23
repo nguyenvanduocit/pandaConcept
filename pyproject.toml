@@ -1,0 +1,28 @@
+[project]
+name = "pandaconcept"
+version = "0.1.0"
+description = "AI-powered interior design workflow — prompt generation, rendering, and consultation across multiple AI providers"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.0",
+    "google-generativeai>=0.8",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
