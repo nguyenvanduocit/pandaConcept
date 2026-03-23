@@ -12,27 +12,7 @@ Most AI tools are **flat**: a list of independent commands. You run one, get out
 
 pandaConcept skills are **connected**: each skill explicitly references related skills, describes when to use them, and warns about common pitfalls. This gives the AI agent a mental map of the entire design process.
 
-```
-                    ┌─────────────────────────────────────────┐
-                    │         /style-guide (hub node)         │
-                    │   Referenced by every other skill —     │
-                    │   the shared vocabulary of design       │
-                    └──────────┬──────────────────────────────┘
-                               │
-          ┌────────────────────┼────────────────────┐
-          │                    │                    │
-   /design-consult       /edit-design           /refine
-          │                    │                    │
-     /mood-board               │                    │
-          │                    │                    │
-   /generate-prompt            │                    │
-          │                    │                    │
-          └────────┬───────────┘                    │
-                   │                                │
-                /render ←───────────────────────────┘
-                   │
-            /compare-models
-```
+![Skill Connection Map](assets/workflow.png)
 
 ### What makes this different
 
@@ -64,55 +44,19 @@ pandaConcept skills are **connected**: each skill explicitly references related 
 
 ### 1. New Design — from blank canvas to rendered image
 
-```mermaid
-graph LR
-    A["/design-consult"] --> B["/mood-board"]
-    B --> C["/generate-prompt"]
-    C --> D["/render"]
-    D --> E["/compare-models"]
-
-    A -.-|"design brief"| B
-    B -.-|"sensory concept"| C
-    C -.-|"provider-optimized prompts"| D
-    D -.-|"rendered images"| E
-
-    style A fill:#4CAF50,color:#fff
-    style B fill:#FF9800,color:#fff
-    style C fill:#2196F3,color:#fff
-    style D fill:#9C27B0,color:#fff
-    style E fill:#F44336,color:#fff
-```
+![New Design Workflow](assets/workflow-new-design.png)
 
 The full pipeline: gather requirements → build concept → generate prompts → render → evaluate. Each step enriches the next.
 
 ### 2. Edit Design — surgical changes to existing images
 
-```mermaid
-graph LR
-    IMG["Reference Image"] --> ED["/edit-design"]
-    ED --> R["/render"]
-
-    ED -.-|"scene inventory<br>→ change diff<br>→ targeted prompt"| R
-
-    style IMG fill:#607D8B,color:#fff
-    style ED fill:#009688,color:#fff
-    style R fill:#9C27B0,color:#fff
-```
+![Edit Design Workflow](assets/workflow-edit-design.png)
 
 Send a photo + describe changes. The system inventories every object, creates a KEEP/MODIFY/ADD/REMOVE diff, and generates prompts that preserve what works.
 
 ### 3. Iterative Refinement — converge on the perfect render
 
-```mermaid
-graph LR
-    FB["Feedback"] --> RF["/refine"]
-    RF --> R["/render"]
-    R -->|"not satisfied"| FB
-
-    style FB fill:#607D8B,color:#fff
-    style RF fill:#FF5722,color:#fff
-    style R fill:#9C27B0,color:#fff
-```
+![Iterative Refinement Workflow](assets/workflow-refinement.png)
 
 Systematic prompt improvement with tracked diffs. The framework knows when to refine, when to rebuild, and when to switch providers.
 
