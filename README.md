@@ -10,6 +10,8 @@ pandaConcept connects interior design knowledge (30+ styles, materials, color pa
 
 ### New Design (from scratch)
 
+Start from a blank slate — define your vision, build a concept, generate prompts, render images, and compare results across providers.
+
 ```mermaid
 graph LR
     A["/design-consult"] --> B["/mood-board"]
@@ -29,7 +31,15 @@ graph LR
     style E fill:#F44336,color:#fff
 ```
 
+1. **`/design-consult`** — Interactive consultation: gather room type, style preferences, budget, mood. Outputs a complete design brief with color palette, materials, furniture plan, and lighting.
+2. **`/mood-board`** — Transform the brief into a rich mood board: color story, texture map, key furniture pieces, lighting atmosphere, and sensory experience description.
+3. **`/generate-prompt`** — Convert the design concept into provider-optimized prompts. Each provider gets a tailored format — keyword-style for Stability AI, structured sections for Gemini, flowing language with parameters for Midjourney.
+4. **`/render`** — Send prompts to AI provider APIs. Images saved to `output/[style]/[provider]/`. Handles errors, rate limits, and content filtering gracefully.
+5. **`/compare-models`** — Side-by-side evaluation across providers on style accuracy, photorealism, composition, detail quality, and color fidelity. Recommends best provider per use case.
+
 ### Edit Existing Design (from reference image)
+
+Already have an image you like but want changes? Send the reference photo with your desired modifications — the system preserves what works and only changes what you ask for.
 
 ```mermaid
 graph LR
@@ -43,7 +53,13 @@ graph LR
     style R fill:#9C27B0,color:#fff
 ```
 
+1. **`/edit-design`** — Analyzes the reference image: inventories every object, surface, material, color, and lighting source. Then creates a change diff (KEEP / MODIFY / ADD / REMOVE) based on your request. Generates targeted prompts for both full re-renders and inpainting (where providers support it).
+
+**Example:** Send a dark marble bathroom photo + "change to Japandi style, add plants." The system keeps the layout and camera angle, swaps marble for wood + plaster, shifts colors from dark to warm neutrals, and adds greenery descriptions.
+
 ### Iterative Refinement
+
+Not satisfied with a render? Feed back what's wrong and get an improved prompt with tracked changes.
 
 ```mermaid
 graph LR
@@ -58,7 +74,11 @@ graph LR
     style R fill:#9C27B0,color:#fff
 ```
 
+1. **`/refine`** — Takes the previous prompt + your feedback (too dark, wrong furniture style, not enough texture). Identifies weak areas in the prompt, generates a refined version with a visible diff, and tracks iteration history. Can suggest switching providers if the issue is provider-specific.
+
 ### How Skills Connect
+
+All skills reference `/style-guide` for consistent design vocabulary. The three workflows converge at `/render` and can feed back into each other.
 
 ```mermaid
 graph TB
@@ -146,73 +166,21 @@ FLUX_API_KEY=...         # Flux
 
 ## Usage
 
-pandaConcept is designed to be used through Claude Code slash commands. Each command is a skill that guides you through the process interactively.
+pandaConcept is used through Claude Code slash commands. Install [Claude Code](https://claude.ai/code), open this project, and use the slash commands described in the workflows above.
 
-### Workflow 1: Design from Scratch
-
-Start with a consultation to define your design direction:
-
-```
+```bash
+# Quick start: get a design consultation
 /design-consult
-```
 
-This walks you through room type, style preferences, budget, and mood — then outputs a design brief with color palette, materials, furniture, and lighting plan.
-
-From there, generate a mood board to crystallize the concept:
-
-```
-/mood-board
-```
-
-Then create provider-optimized prompts:
-
-```
+# Or jump straight to prompt generation
 /generate-prompt
-```
 
-You specify room type, style, and target provider. The system generates prompts tailored to each provider's strengths — keyword-style for Stability AI, structured descriptions for Gemini, flowing language with parameters for Midjourney.
-
-Send prompts to providers:
-
-```
-/render
-```
-
-Compare outputs side-by-side:
-
-```
-/compare-models
-```
-
-### Workflow 2: Edit an Existing Design
-
-Have a reference image you want to modify? Send it along with your changes:
-
-```
+# Edit an existing design from a reference image
 /edit-design
-```
 
-The system analyzes the image (objects, surfaces, materials, colors, lighting, camera angle), creates a diff of what to keep vs. change, and generates targeted prompts. Supports both full re-renders and inpainting prompts for providers that support it.
-
-**Example:** Send a photo of a dark marble bathroom and say "change to Japandi style, add plants." The system preserves the layout and camera angle while swapping materials (marble -> wood + plaster), colors (dark -> warm neutrals), and adding greenery.
-
-### Workflow 3: Iterative Refinement
-
-Not happy with a render? Refine it:
-
-```
-/refine
-```
-
-Provide the previous prompt and feedback (too dark, wrong furniture, not enough texture detail). The system identifies what's weak in the prompt, generates a refined version with tracked changes, and can suggest switching providers if the issue is provider-specific.
-
-### Reference
-
-```
+# Look up any design style
 /style-guide
 ```
-
-Look up any of the 30+ design styles — keywords, materials, colors, and characteristics. Used by all other skills internally.
 
 ## Architecture
 
