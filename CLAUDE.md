@@ -56,10 +56,28 @@ pandaConcept/
 │   ├── prompts/            # Prompt templates and builders
 │   ├── consultation/       # Design consultation logic
 │   └── utils/              # Shared utilities
+├── projects/               # Design projects (one folder per project)
+│   ├── .template/          # Template for new projects (copy this)
+│   └── <project-name>/     # Each project contains:
+│       ├── brief.md        #   Client requirements & project overview
+│       ├── rooms.md        #   Room list with per-room requirements
+│       ├── style-config.yaml #  Style, colors, materials, provider settings
+│       ├── notes.md        #   Feedback, revision history, internal notes
+│       ├── prompts/        #   Generated prompts for this project
+│       ├── references/     #   Client reference images
+│       └── renders/        #   Output renders from providers
 ├── tests/                  # Test suite
 ├── .claude/skills/         # Claude Code skills for design workflows
 └── pyproject.toml          # Project manifest
 ```
+
+## Working with Projects
+
+- To start a new project: copy `projects/.template/` to `projects/<project-name>/`
+- Fill in `brief.md` first (client info, requirements, constraints)
+- Define rooms in `rooms.md`, configure style in `style-config.yaml`
+- Use `/design-consult` with the brief to get style recommendations
+- Generated prompts and renders are saved within the project folder
 
 ## Design Workflow Skills
 
@@ -116,6 +134,33 @@ User gửi ảnh + yêu cầu thay đổi → /edit-design → /render
              │
       /compare-models
 ```
+
+## Project Context Rules (CRITICAL)
+
+**Before ANY design work**, you MUST:
+
+1. **Ask which project** — Hỏi user đang làm project nào, hoặc tự detect từ context
+2. **Read project files** — Đọc các file sau theo thứ tự:
+   - `projects/<name>/brief.md` — để hiểu yêu cầu khách hàng
+   - `projects/<name>/rooms.md` — để biết phòng nào cần làm, yêu cầu gì
+   - `projects/<name>/style-config.yaml` — để dùng đúng style, color, materials
+   - `projects/<name>/notes.md` — để biết feedback trước đó, tránh lặp lỗi cũ
+3. **Check existing renders** — Xem `projects/<name>/renders/` và `projects/<name>/prompts/` để biết đã làm gì rồi
+4. **Cross-check output** — Sau khi generate prompt hoặc render, kiểm tra lại với `style-config.yaml` và `brief.md` xem có khớp không
+
+**Khi nào phải kiểm tra:**
+- `/design-consult` → đọc `brief.md` trước, output ghi vào `brief.md` hoặc `notes.md`
+- `/generate-prompt` → đọc `style-config.yaml` + `rooms.md`, output lưu vào `prompts/`
+- `/render` → đọc prompt từ `prompts/`, output lưu vào `renders/`
+- `/refine` → đọc `notes.md` (feedback cũ) + prompt cũ từ `prompts/`
+- `/edit-design` → đọc `brief.md` + ảnh gốc từ `references/`
+- `/compare-models` → đọc renders từ `renders/`, ghi kết quả vào `notes.md`
+
+**KHÔNG BAO GIỜ:**
+- Generate prompt mà không đọc `style-config.yaml` trước
+- Render mà không biết đang làm project nào
+- Bỏ qua feedback trong `notes.md` khi refine
+- Quên cập nhật `rooms.md` (render status) sau khi render xong
 
 ## Conventions
 
