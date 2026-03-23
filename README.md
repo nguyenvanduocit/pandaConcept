@@ -8,10 +8,85 @@ pandaConcept connects interior design knowledge (30+ styles, materials, color pa
 
 **Three workflows:**
 
+### New Design (from scratch)
+
+```mermaid
+graph LR
+    A["/design-consult"] --> B["/mood-board"]
+    B --> C["/generate-prompt"]
+    C --> D["/render"]
+    D --> E["/compare-models"]
+
+    A -.-|"room, style,<br>budget, mood"| B
+    B -.-|"colors, textures,<br>furniture, lighting"| C
+    C -.-|"provider-optimized<br>prompts"| D
+    D -.-|"generated<br>images"| E
+
+    style A fill:#4CAF50,color:#fff
+    style B fill:#FF9800,color:#fff
+    style C fill:#2196F3,color:#fff
+    style D fill:#9C27B0,color:#fff
+    style E fill:#F44336,color:#fff
 ```
-New design       /design-consult  ->  /mood-board  ->  /generate-prompt  ->  /render  ->  /compare-models
-Edit existing    reference image + changes  ->  /edit-design  ->  /render
-Iterate          feedback on render  ->  /refine  ->  /render  ->  repeat
+
+### Edit Existing Design (from reference image)
+
+```mermaid
+graph LR
+    IMG["Reference Image<br>+ desired changes"] --> ED["/edit-design"]
+    ED --> R["/render"]
+
+    ED -.-|"scene analysis<br>→ change diff<br>→ targeted prompt"| R
+
+    style IMG fill:#607D8B,color:#fff
+    style ED fill:#009688,color:#fff
+    style R fill:#9C27B0,color:#fff
+```
+
+### Iterative Refinement
+
+```mermaid
+graph LR
+    FB["Feedback on<br>current render"] --> RF["/refine"]
+    RF --> R["/render"]
+    R -->|"not satisfied"| FB
+
+    RF -.-|"prompt diff<br>with tracked changes"| R
+
+    style FB fill:#607D8B,color:#fff
+    style RF fill:#FF5722,color:#fff
+    style R fill:#9C27B0,color:#fff
+```
+
+### How Skills Connect
+
+```mermaid
+graph TB
+    SG["/style-guide<br>30+ design styles"]
+
+    DC["/design-consult"] --> MB["/mood-board"]
+    MB --> GP["/generate-prompt"]
+    GP --> RN["/render"]
+
+    ED["/edit-design"] --> RN
+    RF["/refine"] --> RN
+
+    RN --> CM["/compare-models"]
+    RN -->|"iterate"| RF
+
+    SG -.->|"keywords, materials,<br>colors"| DC
+    SG -.->|"style vocabulary"| GP
+    SG -.->|"style vocabulary"| ED
+    SG -.->|"style vocabulary"| RF
+
+    style SG fill:#FFC107,color:#000
+    style DC fill:#4CAF50,color:#fff
+    style MB fill:#FF9800,color:#fff
+    style GP fill:#2196F3,color:#fff
+    style RN fill:#9C27B0,color:#fff
+    style CM fill:#F44336,color:#fff
+    style ED fill:#009688,color:#fff
+    style RF fill:#FF5722,color:#fff
 ```
 
 ## Supported Providers
